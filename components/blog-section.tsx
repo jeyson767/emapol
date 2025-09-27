@@ -18,7 +18,6 @@ export function BlogSection() {
       description:
         "Participación en la feria industrial más importante del país, presentando nuestros últimos equipos y soluciones tecnológicas.",
     },
-    
   ]
 
   return (
@@ -48,8 +47,8 @@ export function BlogSection() {
           </div>
         </div>
 
-        {/* Grid de eventos con diseño atractivo */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Grid de eventos responsive */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {events.map((event, index) => (
             <Card
               key={event.id}
@@ -100,9 +99,9 @@ export function BlogSection() {
           ))}
         </div>
 
-        {/* Estadísticas con diseño mejorado */}
+        {/* Estadísticas responsive */}
         <div className="mt-20 pt-16 border-t border-blue-200/50">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center group">
               <div className="bg-gradient-to-br from-blue-500 to-blue-600 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:shadow-xl transition-shadow duration-300">
                 <span className="text-2xl font-bold text-white">10+</span>
