@@ -29,22 +29,22 @@ export function Header() {
 
   return (
     <>
-      <header className="bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 text-white sticky top-0 z-50 shadow-lg">
+      <header className="bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 text-white sticky top-0 z-50 shadow-lg w-full">
         {/* Top bar */}
         <div className="bg-gradient-to-r from-slate-800 via-blue-800 to-slate-800 py-2 border-b border-blue-700/30">
-          <div className="container mx-auto px-4 flex justify-between items-center text-sm">
-            <div className="flex items-center space-x-4">
-              <div className="flex items-center space-x-2 text-blue-100">
+          <div className="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center text-xs sm:text-sm gap-2">
+            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+              <div className="flex items-center gap-2 text-blue-100">
                 <Phone className="h-4 w-4 text-blue-300" />
                 <span>+51 952 474 660</span>
               </div>
-              <div className="flex items-center space-x-2 text-blue-100">
+              <div className="flex items-center gap-2 text-blue-100 flex-wrap">
                 <Mail className="h-4 w-4 text-blue-300" />
                 <span>ventas@emapolsac.com</span>
-                <span>emapol@emapolsac.com</span>
+                <span className="hidden xs:inline">emapol@emapolsac.com</span>
               </div>
             </div>
-            <div className="flex space-x-3">
+            <div className="flex gap-2 sm:gap-3 mt-2 sm:mt-0">
               <Link href="#" className="hover:text-blue-300 transition-colors p-1 rounded hover:bg-blue-800/30">
                 <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
@@ -71,60 +71,38 @@ export function Header() {
               onClick={() => handleNavigation("/")}
               className="flex items-center hover:opacity-80 transition-all duration-300 hover:scale-105"
             >
-              {/* Logo EMAPOL más grande */}
-              <div className="relative w-20 h-16 drop-shadow-lg">
+              {/* Logo EMAPOL más grande y responsive */}
+              <div className="relative w-32 h-12 sm:w-40 sm:h-16 drop-shadow-lg">
                 <Image src="/images/logo-emapolsac.png" alt="Logo EMAPOL S.A.C" fill className="object-contain" />
               </div>
             </button>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
-              <button
-                onClick={() => handleNavigation("/")}
-                className={`hover:text-blue-300 transition-all duration-300 font-medium px-3 py-2 rounded-lg hover:bg-blue-800/30 ${
-                  pathname === "/" ? "text-blue-300 bg-blue-800/40" : ""
-                }`}
-              >
-                Inicio
-              </button>
-              <button
-                onClick={() => handleNavigation("/nosotros")}
-                className={`hover:text-blue-300 transition-all duration-300 font-medium px-3 py-2 rounded-lg hover:bg-blue-800/30 ${
-                  pathname === "/nosotros" ? "text-blue-300 bg-blue-800/40" : ""
-                }`}
-              >
-                Nosotros
-              </button>
-              <button
-                onClick={() => handleNavigation("/blog")}
-                className={`hover:text-blue-300 transition-all duration-300 font-medium px-3 py-2 rounded-lg hover:bg-blue-800/30 ${
-                  pathname === "/blog" ? "text-blue-300 bg-blue-800/40" : ""
-                }`}
-              >
-                Blog
-              </button>
-              <button
-                onClick={() => handleNavigation("/tienda")}
-                className={`hover:text-blue-300 transition-all duration-300 font-medium px-3 py-2 rounded-lg hover:bg-blue-800/30 ${
-                  pathname === "/tienda" ? "text-blue-300 bg-blue-800/40" : ""
-                }`}
-              >
-                Tienda
-              </button>
-              <button
-                onClick={() => handleNavigation("/contacto")}
-                className={`hover:text-blue-300 transition-all duration-300 font-medium px-3 py-2 rounded-lg hover:bg-blue-800/30 ${
-                  pathname === "/contacto" ? "text-blue-300 bg-blue-800/40" : ""
-                }`}
-              >
-                Contacto
-              </button>
+            <nav className="hidden md:flex items-center space-x-2 lg:space-x-8">
+              {[
+                { href: "/", label: "Inicio" },
+                { href: "/nosotros", label: "Nosotros" },
+                { href: "/blog", label: "Blog" },
+                { href: "/tienda", label: "Tienda" },
+                { href: "/contacto", label: "Contacto" },
+              ].map((item) => (
+                <button
+                  key={item.href}
+                  onClick={() => handleNavigation(item.href)}
+                  className={`hover:text-blue-300 transition-all duration-300 font-medium px-2 py-2 lg:px-3 rounded-lg hover:bg-blue-800/30 ${
+                    pathname === item.href ? "text-blue-300 bg-blue-800/40" : ""
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
             </nav>
 
             {/* Mobile menu button */}
             <button
               className="md:hidden p-2 rounded-lg hover:bg-blue-800/30 transition-colors"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Abrir menú"
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -132,48 +110,25 @@ export function Header() {
 
           {/* Mobile Navigation */}
           {isMenuOpen && (
-            <div className="md:hidden py-4 border-t border-blue-700/30 bg-gradient-to-r from-blue-900/50 to-slate-900/50 rounded-b-lg">
+            <div className="md:hidden py-4 border-t border-blue-700/30 bg-gradient-to-r from-blue-900/80 to-slate-900/80 rounded-b-lg">
               <nav className="flex flex-col space-y-2">
-                <button
-                  onClick={() => handleNavigation("/")}
-                  className={`text-left hover:text-blue-300 transition-all duration-300 font-medium px-3 py-2 rounded-lg hover:bg-blue-800/30 ${
-                    pathname === "/" ? "text-blue-300 bg-blue-800/40" : ""
-                  }`}
-                >
-                  Inicio
-                </button>
-                <button
-                  onClick={() => handleNavigation("/nosotros")}
-                  className={`text-left hover:text-blue-300 transition-all duration-300 font-medium px-3 py-2 rounded-lg hover:bg-blue-800/30 ${
-                    pathname === "/nosotros" ? "text-blue-300 bg-blue-800/40" : ""
-                  }`}
-                >
-                  Nosotros
-                </button>
-                <button
-                  onClick={() => handleNavigation("/blog")}
-                  className={`text-left hover:text-blue-300 transition-all duration-300 font-medium px-3 py-2 rounded-lg hover:bg-blue-800/30 ${
-                    pathname === "/blog" ? "text-blue-300 bg-blue-800/40" : ""
-                  }`}
-                >
-                  Blog
-                </button>
-                <button
-                  onClick={() => handleNavigation("/tienda")}
-                  className={`text-left hover:text-blue-300 transition-all duration-300 font-medium px-3 py-2 rounded-lg hover:bg-blue-800/30 ${
-                    pathname === "/tienda" ? "text-blue-300 bg-blue-800/40" : ""
-                  }`}
-                >
-                  Tienda
-                </button>
-                <button
-                  onClick={() => handleNavigation("/contacto")}
-                  className={`text-left hover:text-blue-300 transition-all duration-300 font-medium px-3 py-2 rounded-lg hover:bg-blue-800/30 ${
-                    pathname === "/contacto" ? "text-blue-300 bg-blue-800/40" : ""
-                  }`}
-                >
-                  Contacto
-                </button>
+                {[
+                  { href: "/", label: "Inicio" },
+                  { href: "/nosotros", label: "Nosotros" },
+                  { href: "/blog", label: "Blog" },
+                  { href: "/tienda", label: "Tienda" },
+                  { href: "/contacto", label: "Contacto" },
+                ].map((item) => (
+                  <button
+                    key={item.href}
+                    onClick={() => handleNavigation(item.href)}
+                    className={`text-left hover:text-blue-300 transition-all duration-300 font-medium px-3 py-2 rounded-lg hover:bg-blue-800/30 ${
+                      pathname === item.href ? "text-blue-300 bg-blue-800/40" : ""
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                ))}
               </nav>
             </div>
           )}
@@ -187,9 +142,9 @@ export function Header() {
             <Image
               src="/images/logo-emapolsac.png"
               alt="EMAPOL S.A.C"
-              width={200}
-              height={80}
-              className="mx-auto drop-shadow-lg"
+              width={160}
+              height={60}
+              className="mx-auto drop-shadow-lg max-w-full h-auto"
             />
           </div>
         </div>
