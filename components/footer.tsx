@@ -116,7 +116,7 @@ export function Footer() {
       <div className="border-t border-blue-700/30 bg-gradient-to-r from-slate-800/50 via-blue-800/50 to-slate-800/50">
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-blue-200 text-sm">© 2024 EMAPOL S.A.C. Todos los derechos reservados.</p>
+            <p className="text-blue-200 text-sm">© 2025 EMAPOL S.A.C. Todos los derechos reservados.</p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link href="#" className="text-blue-200 hover:text-blue-100 text-sm transition-colors duration-300">
                 Política de Privacidad
