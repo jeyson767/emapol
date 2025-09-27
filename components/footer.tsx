@@ -104,7 +104,7 @@ export function Footer() {
               </div>
               <div className="flex items-center space-x-3 group">
                 <Mail className="h-5 w-5 text-blue-300 group-hover:text-blue-200 transition-colors" />
-                <p className="text-blue-200 group-hover:text-blue-100 transition-colors">venta@emapolsac.com</p>
+                <p className="text-blue-200 group-hover:text-blue-100 transition-colors">ventas@emapolsac.com</p>
                 <p className="text-blue-200 group-hover:text-blue-100 transition-colors">emapol@emapolsac.com</p>
               </div>
             </div>
