@@ -13,7 +13,13 @@ export function Loader({ isLoading }: LoaderProps) {
   return (
     <div className="fixed inset-0 bg-white z-[9999] flex items-center justify-center">
       <div className="animate-pulse">
-        <Image src="/images/logo-emapolsac.png" alt="EMAPOL S.A.C" width={250} height={100} className="mx-auto" />
+        <Image
+  src="/images/logo-emapolsac.png"
+  alt="EMAPOL S.A.C"
+  width={250}
+  height={100}
+  className="mx-auto max-w-full h-auto"
+/>
       </div>
     </div>
   )
