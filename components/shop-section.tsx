@@ -16,6 +16,7 @@ export function ShopSection() {
   >([])
   const [showQuoteCart, setShowQuoteCart] = useState(false)
   const [expandedImage, setExpandedImage] = useState<string | null>(null)
+  const [showAddedAlert, setShowAddedAlert] = useState(false)
 
   const products = [
     {
@@ -236,6 +237,9 @@ export function ShopSection() {
         },
       ])
     }
+    // MOSTRAR ALERTA TEMPORAL
+    setShowAddedAlert(true)
+    setTimeout(() => setShowAddedAlert(false), 1500)
   }
 
   // Filter products based on search term only
@@ -248,6 +252,13 @@ export function ShopSection() {
 
   return (
     <>
+    {showAddedAlert && (
+  <div className="fixed top-6 right-4 sm:right-8 z-[9999] bg-green-600/80 text-white px-6 py-3 rounded-lg shadow-lg text-base sm:text-lg font-semibold animate-fade-in backdrop-blur-md"
+    style={{ pointerEvents: "none" }}
+  >
+    ¡Producto agregado al carrito!
+  </div>
+)}
       <section id="tienda" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
