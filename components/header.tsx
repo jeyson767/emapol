@@ -110,8 +110,16 @@ export function Header() {
 
           {/* Mobile Navigation */}
           {isMenuOpen && (
-            <div className="md:hidden py-4 border-t border-blue-700/30 bg-gradient-to-r from-blue-900/80 to-slate-900/80 rounded-b-lg">
-              <nav className="flex flex-col space-y-2">
+            <div className="md:hidden fixed top-0 right-0 h-full w-4/5 max-w-xs bg-gradient-to-br from-blue-900/80 to-slate-900/80 backdrop-blur-lg shadow-xl z-[100] animate-fade-in"
+                 style={{ borderTopLeftRadius: "1.5rem", borderBottomLeftRadius: "1.5rem" }}>
+              <button
+                className="absolute top-4 right-4 p-2 rounded-full bg-blue-800/40 hover:bg-blue-700/60 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+                aria-label="Cerrar menú"
+              >
+                <X className="h-7 w-7 text-white" />
+              </button>
+              <nav className="flex flex-col space-y-2 mt-20 px-6">
                 {[
                   { href: "/", label: "Inicio" },
                   { href: "/nosotros", label: "Nosotros" },
@@ -122,7 +130,7 @@ export function Header() {
                   <button
                     key={item.href}
                     onClick={() => handleNavigation(item.href)}
-                    className={`text-left hover:text-blue-300 transition-all duration-300 font-medium px-3 py-2 rounded-lg hover:bg-blue-800/30 ${
+                    className={`text-left text-lg font-semibold hover:text-blue-300 transition-all duration-300 px-3 py-3 rounded-lg hover:bg-blue-800/30 ${
                       pathname === item.href ? "text-blue-300 bg-blue-800/40" : ""
                     }`}
                   >
