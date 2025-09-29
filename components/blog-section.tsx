@@ -16,8 +16,17 @@ export function BlogSection() {
       title: "Celebración de cumpleaños del Gerente General",
       image: "/images/Cumple.jpg",
       description:
-        "Participación en la feria industrial más importante del país, presentando nuestros últimos equipos y soluciones tecnológicas.",
+        "Un brindis por muchos años más de liderazgo y éxito. ¡Feliz cumpleaños!",
     },
+
+    {
+      id: 3,
+      title: "Premiación iberoamericano 2025",
+      image: "/images/premio.jpg",
+      description:
+        "Orgullosos de ser reconocidos como una de las mejores empresas iberoamericanas. ¡Gracias a todos por hacerlo posible!",
+    },
+
   ]
 
   return (
