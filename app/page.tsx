@@ -1,7 +1,7 @@
 import { Header } from "@/components/header"
 import { HeroSection } from "@/components/hero-section"
-import { AboutSection } from "@/components/about-section"
 import { ServicesSection } from "@/components/services-section"
+import { ObjectivesSection } from "@/components/objectives-section" // Crea este archivo
 import { Footer } from "@/components/footer"
 import { PageLoader } from "@/components/loader"
 import { NavigationLoader } from "@/components/navigation-loader"
@@ -13,11 +13,18 @@ export default function HomePage() {
       <PageLoader />
       <NavigationLoader />
       <Header />
+      
       <main>
+        {/* 1. IMPACTO VISUAL */}
         <HeroSection />
-        <AboutSection />
+
+        {/* 4. SOLUCIONES TÉCNICAS */}
         <ServicesSection />
+
+        {/* 5. PROYECCIÓN Y METAS */}
+        <ObjectivesSection />
       </main>
+
       <Footer />
       <ScrollToTop />
     </div>
