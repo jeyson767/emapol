@@ -1,84 +1,101 @@
+"use client"
+
 import { Badge } from "@/components/ui/badge"
-import Image from "next/image" // Vital para calidad y rendimiento
+import { ChevronRight, ArrowUpRight } from "lucide-react"
+import Image from "next/image"
 
 export function ServicesSection() {
   const services = [
     {
+      id: "01",
       title: "INGENIERÍA Y DISEÑO",
-      description:
-        "Especialistas en desarrollo de repuestos técnicos en Polímeros y Caucho, bajo especificaciones exactas del cliente.",
-      image: "/images/fabricacion.jpeg", // Tus fotos Pixar quedarían increíbles aquí
+      description: "Desarrollo de repuestos técnicos en Polímeros y Caucho bajo especificaciones exactas.",
+      image: "/images/fabricacion.jpeg",
     },
     {
+      id: "02",
       title: "REVESTIMIENTO",
-      description:
-        "Aplicaciones de elastómeros a cualquier espesor y forma, garantizando resistencia extrema en condiciones críticas.",
+      description: "Aplicaciones de elastómeros garantizando resistencia extrema en condiciones críticas.",
       image: "/images/fabricacion3.jpg",
     },
     {
+      id: "03",
       title: "MECANIZADO - CNC",
-      description:
-        "Centros CNC de alta precisión (Línea ROMI) y Maestranza para acabados técnicos de calidad industrial.",
+      description: "Centros CNC de alta precisión (Línea ROMI) para acabados técnicos de calidad industrial.",
       image: "/images/fabricacion4.jpg",
     },
     {
+      id: "04",
       title: "FABRICACIÓN",
-      description:
-        "Producción de repuestos de alta rotación para Jumbos de perforación minera e industria en general.",
+      description: "Producción de alta rotación para Jumbos de perforación minera e industria general.",
       image: "/images/fabricacion2.jpg",
     },
   ]
 
   return (
-    <section id="services" className="py-24 md:py-32 bg-white overflow-hidden selection:bg-blue-100">
+    <section id="services" className="py-24 md:py-32 bg-slate-50 overflow-hidden">
       <div className="container mx-auto px-6">
         
-        {/* --- HEADER ESTILO APPLE --- */}
-        <div className="text-center max-w-4xl mx-auto mb-20 md:mb-32">
-          <Badge variant="outline" className="mb-6 px-4 py-1.5 border-blue-100 text-blue-800 bg-blue-50/50 text-xs font-semibold uppercase tracking-widest rounded-full">
-            CAPACIDAD TÉCNICA
-          </Badge>
-          
-          {/* Título Monumental */}
-          <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-slate-950 tracking-tighter leading-[0.9] uppercase italic mb-8">
-            Soluciones <span className="text-blue-600 not-italic">de Ingeniería.</span>
-          </h2>
-          
-          <p className="text-xl md:text-2xl text-slate-700 leading-tight font-medium max-w-2xl mx-auto">
-            Seis años redefiniendo la <span className="text-blue-700 font-semibold">resistencia</span> en polímeros y caucho para los desafíos más extremos.
-          </p>
+        {/* --- HEADER INDUSTRIAL --- */}
+        <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-20 md:mb-32">
+          <div className="max-w-3xl">
+            <Badge className="mb-6 px-4 py-1.5 border-red-200 text-red-600 bg-red-50 text-xs font-black uppercase tracking-[0.2em] rounded-sm">
+              CAPACIDAD TÉCNICA
+            </Badge>
+            
+            <h2 className="text-6xl md:text-8xl lg:text-9xl font-black text-slate-950 tracking-tighter leading-[0.8] uppercase mb-8">
+              NUESTROS <br />
+              <span className="text-red-600 italic inline-block transform -skew-x-6">SERVICIOS.</span>
+            </h2>
+          </div>
+
+          <div className="max-w-md pb-4">
+            <p className="text-xl text-slate-600 leading-tight font-medium border-l-4 border-red-600 pl-6 uppercase">
+              Seis años redefiniendo la <span className="text-slate-900 font-bold">resistencia industrial</span> en polímeros y caucho.
+            </p>
+          </div>
         </div>
 
-        {/* --- GRID DE SERVICIOS PREMIUM --- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-16">
+        {/* --- GRID DE SERVICIOS --- */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
-            <div key={index} className="flex flex-col group">
+            <div key={index} className="group relative flex flex-col bg-white p-2 rounded-2xl border border-slate-200 hover:border-red-500 transition-all duration-500 hover:shadow-[0_30px_60px_-15px_rgba(230,46,46,0.15)]">
               
-              {/* Contenedor de Imagen con Zoom Suave */}
-              <div className="relative h-64 md:h-72 w-full rounded-3xl overflow-hidden shadow-[0_20px_50px_-10px_rgba(0,0,0,0.1)] mb-10 transition-transform duration-1000 group-hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.2)]">
+              {/* Contenedor de Imagen */}
+              <div className="relative h-72 w-full rounded-xl overflow-hidden mb-8">
+                <div className="absolute inset-0 bg-slate-950/20 group-hover:bg-red-900/40 transition-colors duration-500 z-10" />
+                
+                {/* Número de Servicio (Impacto Visual) */}
+                <span className="absolute top-4 right-4 text-white/40 font-black text-4xl z-20 group-hover:text-white transition-colors">
+                  {service.id}
+                </span>
+
                 <Image
                   src={service.image}
                   alt={service.title}
                   fill
-                  className="object-cover scale-100 group-hover:scale-105 transition-transform duration-1000 ease-out"
-                  sizes="(max-w-768px) 100vw, (max-w-1200px) 50vw, 25vw"
+                  className="object-cover scale-110 group-hover:scale-100 transition-transform duration-700 ease-out"
                 />
               </div>
 
               {/* Contenido de Texto */}
-              <div className="space-y-4 px-2">
-                <h3 className="text-2xl font-black text-slate-950 tracking-tight leading-none uppercase">
+              <div className="px-4 pb-6 flex-grow flex flex-col">
+                <h3 className="text-2xl font-black text-slate-950 tracking-tight leading-none uppercase mb-4 group-hover:text-red-600 transition-colors">
                   {service.title}
                 </h3>
 
-                <p className="text-base text-slate-600 leading-relaxed font-light">
+                <p className="text-sm text-slate-600 leading-relaxed mb-8 flex-grow">
                   {service.description}
                 </p>
                 
-                {/* Botón sutil 'Saber Más' (Conceptual) */}
-                <div className="pt-4 flex items-center gap-2 text-blue-700 font-semibold text-sm group-hover:text-blue-600 cursor-pointer">
-                  <span>Saber más</span>
-                  <ChevronRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
+                {/* Botón Call to Action */}
+                <div className="flex items-center justify-between group/btn cursor-pointer">
+                  <span className="text-slate-950 font-black text-xs tracking-widest uppercase group-hover/btn:text-red-600 transition-colors">
+                    VER DETALLES
+                  </span>
+                  <div className="h-10 w-10 rounded-full bg-slate-100 group-hover:bg-red-600 flex items-center justify-center transition-colors">
+                    <ArrowUpRight className="h-5 w-5 text-slate-950 group-hover:text-white transition-colors" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -88,6 +105,3 @@ export function ServicesSection() {
     </section>
   )
 }
-
-// Icono necesario
-import { ChevronRight } from "lucide-react"
