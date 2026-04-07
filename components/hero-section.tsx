@@ -9,13 +9,13 @@ export function HeroSection() {
 
   const slides = [
     { 
-      image: "/images/Slider1.jpg", 
+      image: "/images/Slider2.png", 
       title: "MANTENIMIENTO", 
       subtitle: "SERVICIO TÉCNICO 24/7", 
       description: "Soporte especializado para evitar paradas críticas." 
     },
     { 
-      image: "/images/Slider2.png", 
+      image: "/images/Slider1.jpg", 
       title: "INGENIERÍA", 
       subtitle: "DISEÑO DE PIEZAS", 
       description: "Fabricación de repuestos con polímeros de alta resistencia." 
