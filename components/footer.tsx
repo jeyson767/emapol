@@ -1,75 +1,71 @@
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { MapPin, Phone, Mail, Facebook, Twitter, Linkedin, Send, Instagram } from "lucide-react"
+"use client"
+
+import Image from "next/image"
+import { Phone, Mail, MapPin } from "lucide-react"
 
 export function Footer() {
-  return (
-    <footer className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white relative overflow-hidden">
-      {/* decoracion */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 via-transparent to-blue-900/20"></div>
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-blue-400 to-blue-500"></div>
+  const currentYear = new Date().getFullYear()
 
-      <div className="container mx-auto px-4 py-16 relative">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* informacion de emapol */}
-          <div className="lg:col-span-1">
-            <div className="flex items-center space-x-2 mb-6">
-              <div className="bg-gradient-to-br from-blue-500 to-blue-600 p-2 rounded-lg shadow-lg">
-                <span className="text-white font-bold text-xl"></span>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-blue-100">EMAPOL S.A.C</h3>
-                <p className="text-sm text-blue-200">Polymer and Rubber Manufacturing</p>
-              </div>
+  return (
+    <footer className="bg-slate-950 text-white pt-16 md:pt-24 pb-8 border-t border-white/5">
+      <div className="container mx-auto px-6 lg:px-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 md:gap-16 mb-16">
+          
+          {/* Branding - Ocupa más espacio en desktop */}
+          <div className="lg:col-span-5 space-y-6 md:space-y-8">
+            <div className="relative w-40 h-10 sm:w-48 sm:h-12">
+              <Image src="/images/logo-emapolsac.png" alt="EMAPOL S.A.C" fill className="object-contain" />
             </div>
-            <p className="text-blue-100 mb-6 leading-relaxed">
-              Diseño, Fabricación de polimeros y cauchos para el sector minero e industrial en general.
+            <p className="text-slate-400 text-sm leading-relaxed max-w-sm font-medium uppercase tracking-tight">
+              Ingeniería de precisión y fabricación industrial. Soluciones de alto rendimiento diseñadas para el sector minero.
             </p>
-            <div className="flex space-x-4">
-              <Link
-                href="https://www.instagram.com/emapolsac?igsh=MW4zamxrOWhnZmJhYw=="
-                className="bg-slate-800/50 p-2 rounded-lg hover:bg-blue-600 transition-all duration-300 hover:scale-110 hover:shadow-lg"
-              >
-                <Instagram className="h-5 w-5 text-blue-200" />
-              </Link>
-              <Link
-                href="#"
-                className="bg-slate-800/50 p-2 rounded-lg hover:bg-blue-600 transition-all duration-300 hover:scale-110 hover:shadow-lg"
-              >
-              <Linkedin className="h-5 w-5 text-blue-200" />
-              </Link>
-            </div>
           </div>
 
-          {/* Contact Info */}
-          <div>
-            <h4 className="text-lg font-semibold mb-6 text-blue-100 border-b border-blue-700/30 pb-2">Contacto</h4>
+          {/* Navegación - Ocupa menos espacio */}
+          <div className="lg:col-span-3 space-y-6">
+            <h3 className="text-[11px] font-black uppercase tracking-[0.3em] text-slate-500">Navegación</h3>
+            <nav className="flex flex-col space-y-3 md:space-y-4">
+              {["Inicio", "Nosotros", "Blog", "Tienda", "Contacto"].map((item) => (
+                <a key={item} href="#" className="text-sm font-bold text-slate-300 hover:text-[#E62E2E] transition-colors uppercase tracking-widest inline-block">
+                  {item}
+                </a>
+              ))}
+            </nav>
+          </div>
+
+          {/* Contacto - Ocupa el resto */}
+          <div className="lg:col-span-4 space-y-6">
+            <h3 className="text-[11px] font-black uppercase tracking-[0.3em] text-slate-500">Contacto Técnico</h3>
             <div className="space-y-4">
-              <div className="flex items-start space-x-3 group">
-                <MapPin className="h-5 w-5 text-blue-300 mt-1 group-hover:text-blue-200 transition-colors" />
-                <div>
-                  <p className="text-blue-200 group-hover:text-blue-100 transition-colors">Jr. Jose de la Mar Mz H Lote 3-3A</p>
-                  <p className="text-blue-200 group-hover:text-blue-100 transition-colors">Lima - Lima - Lurigancho</p>
-                </div>
-              </div>
-              <div className="flex items-center space-x-3 group">
-                <Phone className="h-5 w-5 text-blue-300 group-hover:text-blue-200 transition-colors" />
-                <p className="text-blue-200 group-hover:text-blue-100 transition-colors">+51 952 474 660</p>
-              </div>
-              <div className="flex items-center space-x-3 group">
-                <Mail className="h-5 w-5 text-blue-300 group-hover:text-blue-200 transition-colors" />
-                <p className="text-blue-200 group-hover:text-blue-100 transition-colors">ventas@emapolsac.com</p>
-                <p className="text-blue-200 group-hover:text-blue-100 transition-colors">emapol@emapolsac.com</p>
-              </div>
+              <ContactItem icon={Phone} text="+51 (01) 123 4567" />
+              <ContactItem icon={Mail} text="ventas@emapol.com.pe" />
+              <ContactItem icon={MapPin} text="Ate, Lima, Perú" />
             </div>
           </div>
         </div>
-      </div>
-      <div className="bg-blue-900 text-center text-sm text-blue-200 py-4 border-t border-blue-700/30">  
-        &copy; {new Date().getFullYear()} EMAPOL S.A.C. Todos los derechos reservados.      
+
+        {/* Barra Final Responsiva */}
+        <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-6">
+          <p className="text-[10px] font-bold text-slate-600 uppercase tracking-[0.4em] text-center sm:text-left">
+            © {currentYear} EMAPOL S.A.C — TODOS LOS DERECHOS RESERVADOS
+          </p>
+          <div className="hidden md:block h-[1px] w-20 bg-[#E62E2E]"></div>
+          <p className="text-[10px] font-bold text-slate-600 uppercase tracking-[0.4em] text-center sm:text-right">
+            INGENIERÍA PERUANA DE PRECISIÓN
+          </p>
+        </div>
       </div>
     </footer>
+  )
+}
 
+function ContactItem({ icon: Icon, text }: { icon: any, text: string }) {
+  return (
+    <div className="flex items-center space-x-4 group cursor-pointer">
+      <div className="p-2.5 sm:p-3 bg-white/5 rounded-xl group-hover:bg-[#E62E2E]/10 transition-colors shrink-0">
+        <Icon size={18} className="text-[#E62E2E]" />
+      </div>
+      <span className="text-sm font-bold text-slate-200 truncate">{text}</span>
+    </div>
   )
 }
