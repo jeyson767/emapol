@@ -9,19 +9,19 @@ export function HeroSection() {
 
   const slides = [
     { 
-      image: "/images/Slider2.png", 
+      image: "/images/Imagen1.jpg", 
       title: "MANTENIMIENTO", 
       subtitle: "SERVICIO TÉCNICO 24/7", 
       description: "Soporte especializado para evitar paradas críticas." 
     },
     { 
-      image: "/images/Slider1.jpg", 
+      image: "/images/Imagen2.png", 
       title: "INGENIERÍA", 
       subtitle: "DISEÑO DE PIEZAS", 
       description: "Fabricación de repuestos con polímeros de alta resistencia." 
     },
     { 
-      image: "/images/Slider3.png", 
+      image: "/images/Imagen3.png", 
       title: "CALIDAD", 
       subtitle: "STOCK ORIGINAL", 
       description: "Repuestos certificados con durabilidad extrema." 
