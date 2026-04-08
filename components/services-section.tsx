@@ -90,14 +90,6 @@ export function ServicesSection() {
                 <p className="text-[13px] text-slate-500 leading-relaxed mb-6 flex-grow font-medium text-left">
                   {service.description}
                 </p>
-                <div className="flex items-center justify-between pt-6 border-t border-slate-100 group/btn">
-                  <span className="text-slate-900 font-black text-[10px] tracking-widest uppercase group-hover/btn:text-red-600 transition-colors">
-                    SOLICITAR FICHA
-                  </span>
-                  <div className="h-10 w-10 rounded-xl bg-slate-50 group-hover:bg-red-600 flex items-center justify-center transition-all duration-500 group-hover:rotate-12">
-                    <ArrowUpRight className="h-5 w-5 text-slate-950 group-hover:text-white transition-colors" />
-                  </div>
-                </div>
               </div>
             </div>
           ))}

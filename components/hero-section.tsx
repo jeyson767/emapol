@@ -10,20 +10,20 @@ export function HeroSection() {
   const slides = [
     { 
       image: "/images/Imagen1.jpg", 
-      title: "MANTENIMIENTO", 
-      subtitle: "SERVICIO TÉCNICO 24/7", 
-      description: "Soporte especializado para evitar paradas críticas." 
+      title: "DISEÑO Y FABRICACION", 
+      subtitle: "POLÍMEROS Y CAUCHO", 
+      description: "Para la minería subterránea e industria en general." 
     },
     { 
       image: "/images/Imagen2.png", 
       title: "INGENIERÍA", 
       subtitle: "DISEÑO DE PIEZAS", 
-      description: "Fabricación de repuestos con polímeros de alta resistencia." 
+      description: "Fabricación de repuestos con polímeros y caucho de alta resistencia a medida." 
     },
     { 
       image: "/images/Imagen3.png", 
       title: "CALIDAD", 
-      subtitle: "STOCK ORIGINAL", 
+      subtitle: "STOCK INMEDIATO", 
       description: "Repuestos certificados con durabilidad extrema." 
     },
   ]
@@ -96,7 +96,7 @@ export function HeroSection() {
                   <div className="flex flex-wrap gap-3 sm:gap-8 pt-4 md:pt-6 border-t border-white/20">
                     <FeatureItem icon={Shield} title="CALIDAD" />
                     <FeatureItem icon={Wrench} title="TÉCNICOS" />
-                    <FeatureItem icon={Clock} title="24/7" className="hidden sm:flex" />
+                    <FeatureItem icon={Clock} title="INMEDIATO" className="hidden sm:flex" />
                   </div>
                 </div>
               </div>
