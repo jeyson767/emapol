@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState,} from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -79,61 +79,61 @@ export function ShopSection() {
 
   return (
     <>
-{showAddedAlert && (
-  // Cambiamos right-4/10 por right-0 para que se pegue al borde derecho
-  <div className="fixed bottom-56 right-0 z-[10000] animate-in fade-in slide-in-from-right-10 duration-300">
-    <div className="bg-slate-950/95 backdrop-blur-xl border border-white/10 px-6 py-4 rounded-l-2xl shadow-[-10px_0_50px_rgba(0,0,0,0.5)] flex items-center gap-4 border-r-4 border-r-red-600">
-      
-      {/* Icono de rayo EMAPOL con pulso */}
-      <div className="relative">
-        <div className="absolute inset-0 bg-red-600 rounded-full blur-md opacity-50 animate-pulse" />
-        <div className="relative bg-red-600 rounded-full p-2">
-          <Zap className="h-4 w-4 text-white fill-white" />
-        </div>
-      </div>
-      
-      <div className="flex flex-col items-start leading-tight">
-        <span className="text-[9px] font-black uppercase tracking-[0.3em] text-red-500">Notificación</span>
-        <span className="text-sm font-black uppercase italic tracking-tighter text-white">
-          ¡PIEZA AÑADIDA!
-        </span>
-      </div>
+      {showAddedAlert && (
+        // Cambiamos right-4/10 por right-0 para que se pegue al borde derecho
+        <div className="fixed bottom-56 right-0 z-[10000] animate-in fade-in slide-in-from-right-10 duration-300">
+          <div className="bg-slate-950/95 backdrop-blur-xl border border-white/10 px-6 py-4 rounded-l-2xl shadow-[-10px_0_50px_rgba(0,0,0,0.5)] flex items-center gap-4 border-r-4 border-r-red-600">
 
-      <div className="ml-2 bg-white/5 p-2 rounded-lg">
-        <FileText className="h-5 w-5 text-slate-400" />
-      </div>
-    </div>
-  </div>
-)}
+            {/* Icono de rayo EMAPOL con pulso */}
+            <div className="relative">
+              <div className="absolute inset-0 bg-red-600 rounded-full blur-md opacity-50 animate-pulse" />
+              <div className="relative bg-red-600 rounded-full p-2">
+                <Zap className="h-4 w-4 text-white fill-white" />
+              </div>
+            </div>
+
+            <div className="flex flex-col items-start leading-tight">
+              <span className="text-[9px] font-black uppercase tracking-[0.3em] text-red-500">Notificación</span>
+              <span className="text-sm font-black uppercase italic tracking-tighter text-white">
+                ¡PIEZA AÑADIDA!
+              </span>
+            </div>
+
+            <div className="ml-2 bg-white/5 p-2 rounded-lg">
+              <FileText className="h-5 w-5 text-slate-400" />
+            </div>
+          </div>
+        </div>
+      )}
 
       <section id="tienda" className="pt-32 pb-24 bg-white relative overflow-hidden">
-        
+
         {/* --- EL MOSAICO DE MARCA ULTRA-DENSIFICADO (EDICIÓN TIENDA) --- */}
-<div className="absolute inset-0 z-0 pointer-events-none opacity-[0.04] md:opacity-[0.07]" aria-hidden="true">
-  {/* Fila Superior */}
-  <img src="/images/logo.png" className="absolute top-[2%] left-[10%] w-32 md:w-64 rotate-12 blur-[1px]" alt="" />
-  <img src="/images/logo.png" className="absolute top-[8%] right-[5%] w-28 md:w-44 -rotate-12 blur-[2px]" alt="" />
-  
-  {/* Bloque Central Superior */}
-  <img src="/images/logo.png" className="absolute top-[20%] left-[40%] w-24 md:w-36 rotate-[45deg] blur-[3px]" alt="" />
-  <img src="/images/logo.png" className="absolute top-[25%] right-[30%] w-36 md:w-56 -rotate-12 blur-[1px]" alt="" />
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.04] md:opacity-[0.07]" aria-hidden="true">
+          {/* Fila Superior */}
+          <img src="/images/logo.png" className="absolute top-[2%] left-[10%] w-32 md:w-64 rotate-12 blur-[1px]" alt="" />
+          <img src="/images/logo.png" className="absolute top-[8%] right-[5%] w-28 md:w-44 -rotate-12 blur-[2px]" alt="" />
 
-  {/* Laterales Medios (Muy grandes para llenar espacio) */}
-  <img src="/images/logo.png" className="absolute top-[45%] left-[-10%] w-64 md:w-[500px] rotate-[15deg] blur-[5px]" alt="" />
-  <img src="/images/logo.png" className="absolute top-[50%] right-[-5%] w-52 md:w-80 -rotate-45 blur-[2px]" alt="" />
+          {/* Bloque Central Superior */}
+          <img src="/images/logo.png" className="absolute top-[20%] left-[40%] w-24 md:w-36 rotate-[45deg] blur-[3px]" alt="" />
+          <img src="/images/logo.png" className="absolute top-[25%] right-[30%] w-36 md:w-56 -rotate-12 blur-[1px]" alt="" />
 
-  {/* Bloque Central Inferior */}
-  <img src="/images/logo.png" className="absolute top-[70%] left-[25%] w-40 md:w-60 rotate-[20deg] blur-[3px]" alt="" />
-  <img src="/images/logo.png" className="absolute top-[75%] right-[40%] w-32 md:w-48 -rotate-12 blur-[1px]" alt="" />
+          {/* Laterales Medios (Muy grandes para llenar espacio) */}
+          <img src="/images/logo.png" className="absolute top-[45%] left-[-10%] w-64 md:w-[500px] rotate-[15deg] blur-[5px]" alt="" />
+          <img src="/images/logo.png" className="absolute top-[50%] right-[-5%] w-52 md:w-80 -rotate-45 blur-[2px]" alt="" />
 
-  {/* Fila Base (Cerca del final) */}
-  <img src="/images/logo.png" className="absolute bottom-[10%] left-[5%] w-48 md:w-72 rotate-12 blur-[2px]" alt="" />
-  <img src="/images/logo.png" className="absolute bottom-[15%] right-[15%] w-40 md:w-60 -rotate-[20deg] blur-[4px]" alt="" />
-  <img src="/images/logo.png" className="absolute bottom-[2%] left-[50%] -translate-x-1/2 w-32 md:w-56 rotate-[10deg] blur-[1px]" alt="" />
-</div>
+          {/* Bloque Central Inferior */}
+          <img src="/images/logo.png" className="absolute top-[70%] left-[25%] w-40 md:w-60 rotate-[20deg] blur-[3px]" alt="" />
+          <img src="/images/logo.png" className="absolute top-[75%] right-[40%] w-32 md:w-48 -rotate-12 blur-[1px]" alt="" />
+
+          {/* Fila Base (Cerca del final) */}
+          <img src="/images/logo.png" className="absolute bottom-[10%] left-[5%] w-48 md:w-72 rotate-12 blur-[2px]" alt="" />
+          <img src="/images/logo.png" className="absolute bottom-[15%] right-[15%] w-40 md:w-60 -rotate-[20deg] blur-[4px]" alt="" />
+          <img src="/images/logo.png" className="absolute bottom-[2%] left-[50%] -translate-x-1/2 w-32 md:w-56 rotate-[10deg] blur-[1px]" alt="" />
+        </div>
 
         <div className="container mx-auto px-6 relative z-10">
-          
+
           {/* --- HEADER ESTILO EMAPOL --- */}
           <div className="text-center mb-16">
             <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] uppercase italic text-slate-950 mb-8">
@@ -265,42 +265,42 @@ export function ShopSection() {
         </div>
       </section>
 
-{/* --- BOTÓN FLOTANTE DE COTIZACIÓN (AJUSTE MÓVIL) --- */}
-{quoteItems.length > 0 && (
-  <div className="fixed bottom-32 right-0 z-[9999] animate-in fade-in slide-in-from-right-10 duration-500">
-    
-    {/* Resplandor sutil */}
-    <span className="absolute inset-0 rounded-l-full bg-red-600/15 animate-pulse blur-lg" />
-    
-    <Button
-      onClick={() => setShowQuoteCart(true)}
-      // MÓVIL: h-14 w-14 (Círculo) | DESKTOP: h-16 w-auto (Pestaña)
-      className="relative group bg-slate-950 hover:bg-red-700 text-white rounded-l-full h-14 md:h-16 w-14 md:w-auto px-0 md:px-6 flex items-center justify-center gap-0 md:gap-4 shadow-[-10px_0_40px_rgba(0,0,0,0.4)] border-r-4 border-red-600 transition-all duration-300 active:scale-95"
-    >
-      {/* Icono Principal - Centrado en móvil */}
-      <div className="bg-red-600 p-2 md:p-2.5 rounded-full group-hover:rotate-12 transition-transform duration-300 shadow-md">
-        <FileText className="h-5 w-5 md:h-6 md:w-6 text-white" />
-      </div>
+      {/* --- BOTÓN FLOTANTE DE COTIZACIÓN (AJUSTE MÓVIL) --- */}
+      {quoteItems.length > 0 && (
+        <div className="fixed bottom-32 right-0 z-[9999] animate-in fade-in slide-in-from-right-10 duration-500">
 
-      {/* Separador - Solo visible en Desktop */}
-      <div className="hidden md:block w-px h-8 bg-slate-700" />
+          {/* Resplandor sutil */}
+          <span className="absolute inset-0 rounded-l-full bg-red-600/15 animate-pulse blur-lg" />
 
-      {/* Contador - En móvil flota sobre el icono, en desktop va al lado */}
-      <div className="flex flex-col items-center justify-center relative">
-        {/* Etiqueta "Ítems" - Oculta en móvil */}
-        <span className="hidden md:block text-[10px] font-black uppercase tracking-[0.2em] text-red-500 mb-0.5">Ítems</span>
-        
-        <div className="flex items-end gap-1">
-          {/* En móvil el número es un badge pequeño arriba del icono, en desktop es el número grande */}
-          <span className="absolute -top-10 -left-8 md:relative md:top-0 md:left-0 bg-white md:bg-transparent text-slate-950 md:text-white text-[11px] md:text-3xl font-black rounded-full md:rounded-none h-6 w-6 md:h-auto md:w-auto flex items-center justify-center border-2 border-red-600 md:border-0 italic tracking-tighter leading-none">
-            {String(quoteItems.length).padStart(2, '0')}
-          </span>
-          <Zap className="hidden md:block h-4 w-4 text-red-500 fill-red-500 mb-1 opacity-70" />
+          <Button
+            onClick={() => setShowQuoteCart(true)}
+            // MÓVIL: h-14 w-14 (Círculo) | DESKTOP: h-16 w-auto (Pestaña)
+            className="relative group bg-slate-950 hover:bg-red-700 text-white rounded-l-full h-14 md:h-16 w-14 md:w-auto px-0 md:px-6 flex items-center justify-center gap-0 md:gap-4 shadow-[-10px_0_40px_rgba(0,0,0,0.4)] border-r-4 border-red-600 transition-all duration-300 active:scale-95"
+          >
+            {/* Icono Principal - Centrado en móvil */}
+            <div className="bg-red-600 p-2 md:p-2.5 rounded-full group-hover:rotate-12 transition-transform duration-300 shadow-md">
+              <FileText className="h-5 w-5 md:h-6 md:w-6 text-white" />
+            </div>
+
+            {/* Separador - Solo visible en Desktop */}
+            <div className="hidden md:block w-px h-8 bg-slate-700" />
+
+            {/* Contador - En móvil flota sobre el icono, en desktop va al lado */}
+            <div className="flex flex-col items-center justify-center relative">
+              {/* Etiqueta "Ítems" - Oculta en móvil */}
+              <span className="hidden md:block text-[10px] font-black uppercase tracking-[0.2em] text-red-500 mb-0.5">Ítems</span>
+
+              <div className="flex items-end gap-1">
+                {/* En móvil el número es un badge pequeño arriba del icono, en desktop es el número grande */}
+                <span className="absolute -top-10 -left-8 md:relative md:top-0 md:left-0 bg-white md:bg-transparent text-slate-950 md:text-white text-[11px] md:text-3xl font-black rounded-full md:rounded-none h-6 w-6 md:h-auto md:w-auto flex items-center justify-center border-2 border-red-600 md:border-0 italic tracking-tighter leading-none">
+                  {String(quoteItems.length).padStart(2, '0')}
+                </span>
+                <Zap className="hidden md:block h-4 w-4 text-red-500 fill-red-500 mb-1 opacity-70" />
+              </div>
+            </div>
+          </Button>
         </div>
-      </div>
-    </Button>
-  </div>
-)}
+      )}
 
       <QuoteCart isOpen={showQuoteCart} onClose={() => setShowQuoteCart(false)} items={quoteItems} onUpdateItems={setQuoteItems} />
     </>

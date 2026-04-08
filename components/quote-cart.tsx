@@ -1,12 +1,10 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { X, Trash2, MessageCircle } from "lucide-react"
+import { X, Trash2, MessageCircle, FileText, Zap } from "lucide-react"
 
 interface QuoteItem {
   id: number
@@ -45,150 +43,162 @@ export function QuoteCart({ isOpen, onClose, items, onUpdateItems }: QuoteCartPr
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-
-    // Crear mensaje para WhatsApp
     const itemsList = items.map((item) => `• ${item.name} (${item.partNumber}) - Cantidad: ${item.quantity}`).join("\n")
-
-    const message = `Hola, solicito cotización para los siguientes productos:
-
-${itemsList}
-
-Datos del cliente:
-Nombre: ${formData.name}
-Empresa: ${formData.company}
-RUC: ${formData.ruc}
-
-Gracias.`
-
+    const message = `Hola, solicito cotización para los siguientes productos:\n\n${itemsList}\n\nDatos del cliente:\nNombre: ${formData.name}\nEmpresa: ${formData.company}\nRUC: ${formData.ruc}\n\nGracias.`
     const whatsappUrl = `https://wa.me/51952474660?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, "_blank")
-
-    // limpiar formulario 
-    setFormData({
-      name: "",
-      company: "",
-      ruc: "",
-    })
+    
+    setFormData({ name: "", company: "", ruc: "" })
     onUpdateItems([])
     onClose()
   }
 
   return (
-    <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-lg max-w-6xl w-full max-h-[90vh] overflow-hidden">
-        <div className="flex items-center justify-between p-6 border-b">
-          <h2 className="text-2xl font-bold">Lista de Cotizaciones</h2>
-          <Button size="icon" variant="ghost" onClick={onClose}>
-            <X className="h-6 w-6" />
+    // Se cierra al hacer clic en el fondo oscuro (bg-slate-950/40)
+    <div 
+      className="fixed inset-0 bg-slate-950/60 z-[10000] flex items-center justify-center p-4 backdrop-blur-sm animate-in fade-in duration-300"
+      onClick={onClose} 
+    >
+      {/* Contenedor Principal - onClick preventDefault para que no se cierre al tocar el contenido */}
+      <div 
+        className="bg-white rounded-[2rem] max-w-5xl w-full max-h-[85vh] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.5)] flex flex-col border border-slate-100"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* --- HEADER --- */}
+        <div className="flex items-center justify-between p-8 border-b border-slate-100 bg-white sticky top-0 z-10">
+          <div className="flex items-center gap-3">
+            <div className="bg-red-600 p-2 rounded-xl">
+              <FileText className="h-6 w-6 text-white" />
+            </div>
+            <h2 className="text-2xl font-black text-slate-950 uppercase italic tracking-tighter">
+              Tu Lista de <span className="text-red-600">Cotización.</span>
+            </h2>
+          </div>
+          <Button 
+            size="icon" 
+            variant="ghost" 
+            onClick={onClose}
+            className="rounded-full hover:bg-red-50 hover:text-red-600 transition-colors"
+          >
+            <X className="h-7 w-7" />
           </Button>
         </div>
 
-        <div className="flex flex-col lg:flex-row max-h-[calc(90vh-80px)]">
-          {/* Lista de productos */}
-          <div className="lg:w-1/2 p-6 border-r overflow-y-auto">
+        {/* --- CONTENIDO CON SCROLL INDEPENDIENTE --- */}
+        <div className="flex flex-col lg:flex-row overflow-hidden flex-1">
+          
+          {/* LADO IZQUIERDO: LISTA DE PRODUCTOS (SCROLLABLE) */}
+          <div className="lg:w-3/5 p-8 overflow-y-auto border-r border-slate-100 bg-slate-50/30">
             <div className="space-y-4">
-              <div className="grid grid-cols-3 gap-4 text-sm font-medium text-gray-600 pb-2 border-b">
+              <div className="flex justify-between items-center pb-4 text-[10px] font-black uppercase tracking-widest text-slate-400 border-b border-slate-100">
                 <span>Detalles Del Producto</span>
-                <span>Cantidad</span>
-                <span></span>
+                <span className="mr-20">Cantidad</span>
               </div>
 
-              {items.map((item) => (
-                <div key={item.id} className="grid grid-cols-3 gap-4 items-center py-3 border-b">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-1 h-8 bg-red-500"></div>
-                    <div>
-                      <p className="font-medium text-blue-600">{item.name}</p>
-                      <p className="text-sm text-gray-500">{item.partNumber}</p>
+              {items.length > 0 ? (
+                items.map((item) => (
+                  <div key={item.id} className="flex items-center gap-4 py-4 border-b border-slate-100 group animate-in slide-in-from-left-4 duration-300">
+                    <div className="w-1.5 h-12 bg-red-600 rounded-full group-hover:h-14 transition-all" />
+                    <div className="flex-1">
+                      <p className="font-black text-slate-950 uppercase italic text-sm leading-none mb-1 group-hover:text-red-600 transition-colors">
+                        {item.name}
+                      </p>
+                      <p className="font-mono text-xs text-slate-400 font-bold tracking-tighter">
+                        P/N: {item.partNumber}
+                      </p>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <Input
+                        type="number"
+                        value={item.quantity}
+                        onChange={(e) => updateQuantity(item.id, Math.max(1, parseInt(e.target.value) || 1))}
+                        className="w-20 h-10 font-black text-center border-2 border-slate-100 focus:border-red-600 rounded-xl"
+                        min="1"
+                      />
+                      <Button
+                        size="icon"
+                        variant="ghost"
+                        onClick={() => removeItem(item.id)}
+                        className="text-slate-300 hover:text-red-600 hover:bg-red-50 rounded-xl"
+                      >
+                        <Trash2 className="h-5 w-5" />
+                      </Button>
                     </div>
                   </div>
-
-                  <Input
-                    type="number"
-                    value={item.quantity}
-                    onChange={(e) => updateQuantity(item.id, Number.parseInt(e.target.value) || 1)}
-                    className="w-20"
-                    min="1"
-                  />
-
-                  <Button
-                    size="icon"
-                    variant="ghost"
-                    onClick={() => removeItem(item.id)}
-                    className="text-red-500 hover:text-red-700"
-                  >
-                    <Trash2 className="h-4 w-4" />
-                  </Button>
+                ))
+              ) : (
+                <div className="text-center py-20">
+                  <Zap className="h-12 w-12 text-slate-200 mx-auto mb-4" />
+                  <p className="text-slate-400 font-black uppercase italic">No hay productos seleccionados.</p>
                 </div>
-              ))}
+              )}
             </div>
 
-            <div className="mt-6 space-y-3">
-              
-              <div className="flex gap-3">
-                <Button variant="outline" className="flex-1 w-full bg-red-500 hover:bg-red-600 text-white" onClick={() => onUpdateItems([])}>
-                  Borrar Lista
-                </Button>
-                
-              </div>
-            </div>
+            {items.length > 0 && (
+              <Button 
+                variant="ghost" 
+                className="mt-8 text-red-600 font-black text-xs tracking-widest hover:bg-red-50 uppercase"
+                onClick={() => onUpdateItems([])}
+              >
+                Limpiar Toda la Lista
+              </Button>
+            )}
           </div>
 
-          {/* Formulario */}
-          <div className="lg:w-1/2 p-6 overflow-y-auto bg-gray-50 rounded-b-lg lg:rounded-r-lg lg:rounded-bl-none shadow-inner">
-            <h3 className="text-xl font-bold mb-6 text-blue-900">Solicitud de cotización</h3>
+          {/* LADO DERECHO: FORMULARIO (ESTÁTICO/SCROLLABLE) */}
+          <div className="lg:w-2/5 p-8 bg-slate-950 overflow-y-auto">
+            <h3 className="text-xl font-black text-white uppercase italic tracking-tighter mb-8 flex items-center gap-2">
+              <Zap className="h-5 w-5 text-red-600 fill-red-600" />
+              Finalizar Pedido
+            </h3>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-1">
-                    Nombre y Apellido <span className="text-red-500">*</span>
-                  </label>
-                  <Input
-                    placeholder="Ej: Juan Pérez"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    required
-                    className="bg-white/80 focus:ring-2 focus:ring-blue-400"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-1">
-                    Empresa <span className="text-red-500">*</span>
-                  </label>
-                  <Input
-                    placeholder="Ej: EMAPOL S.A.C"
-                    value={formData.company}
-                    onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                    required
-                    className="bg-white/80 focus:ring-2 focus:ring-blue-400"
-                  />
-                </div>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="space-y-2">
+                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Nombre y Apellido *</label>
+                <Input
+                  placeholder="EJ: JUAN PÉREZ"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value.toUpperCase() })}
+                  required
+                  className="bg-white/5 border-white/10 text-white h-12 focus:border-red-600 focus:ring-0 rounded-xl uppercase font-bold"
+                />
               </div>
 
-              <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1">
-                  RUC <span className="text-red-500">*</span>
-                </label>
+              <div className="space-y-2">
+                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Empresa *</label>
                 <Input
-                  placeholder="Ej: 20123456789"
+                  placeholder="EJ: EMAPOL S.A.C"
+                  value={formData.company}
+                  onChange={(e) => setFormData({ ...formData, company: e.target.value.toUpperCase() })}
+                  required
+                  className="bg-white/5 border-white/10 text-white h-12 focus:border-red-600 focus:ring-0 rounded-xl uppercase font-bold"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">RUC *</label>
+                <Input
+                  placeholder="EJ: 20123456789"
                   value={formData.ruc}
                   onChange={(e) => setFormData({ ...formData, ruc: e.target.value })}
                   required
-                  className="bg-white/80 focus:ring-2 focus:ring-blue-400"
+                  className="bg-white/5 border-white/10 text-white h-12 focus:border-red-600 focus:ring-0 rounded-xl font-bold"
                 />
               </div>
 
               <Button
                 type="submit"
-                className="w-full bg-green-600 hover:bg-green-700 text-lg font-semibold py-3 rounded-lg shadow-md flex items-center justify-center gap-2"
+                disabled={items.length === 0}
+                className="w-full bg-red-600 hover:bg-red-700 text-white font-black text-sm tracking-widest py-7 rounded-2xl shadow-[0_15px_30px_rgba(220,38,38,0.3)] transition-all active:scale-95 disabled:opacity-50 disabled:bg-slate-800"
               >
-                <MessageCircle className="h-5 w-5" />
-                Enviar por WhatsApp
+                <MessageCircle className="h-5 w-5 mr-2" />
+                ENVIAR POR WHATSAPP
               </Button>
             </form>
-            <p className="text-xs text-gray-500 mt-4 text-center">
-              * Todos los campos son obligatorios. Sus datos están protegidos.
+            
+            <p className="text-[9px] text-slate-500 mt-8 text-center font-bold tracking-widest leading-relaxed">
+              * AL ENVIAR, SE ABRIRÁ WHATSAPP PARA <br /> CONFIRMAR LOS DETALLES TÉCNICOS.
             </p>
           </div>
         </div>
