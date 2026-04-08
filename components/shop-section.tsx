@@ -79,11 +79,32 @@ export function ShopSection() {
 
   return (
     <>
-      {showAddedAlert && (
-        <div className="fixed top-6 right-4 sm:right-8 z-[9999] bg-red-600/90 text-white px-6 py-3 rounded-lg shadow-lg text-base sm:text-lg font-black animate-in fade-in slide-in-from-top-4 duration-300 backdrop-blur-md">
-          ¡AGREGADO A TU COTIZACIÓN!
+{showAddedAlert && (
+  // Cambiamos right-4/10 por right-0 para que se pegue al borde derecho
+  <div className="fixed bottom-56 right-0 z-[10000] animate-in fade-in slide-in-from-right-10 duration-300">
+    <div className="bg-slate-950/95 backdrop-blur-xl border border-white/10 px-6 py-4 rounded-l-2xl shadow-[-10px_0_50px_rgba(0,0,0,0.5)] flex items-center gap-4 border-r-4 border-r-red-600">
+      
+      {/* Icono de rayo EMAPOL con pulso */}
+      <div className="relative">
+        <div className="absolute inset-0 bg-red-600 rounded-full blur-md opacity-50 animate-pulse" />
+        <div className="relative bg-red-600 rounded-full p-2">
+          <Zap className="h-4 w-4 text-white fill-white" />
         </div>
-      )}
+      </div>
+      
+      <div className="flex flex-col items-start leading-tight">
+        <span className="text-[9px] font-black uppercase tracking-[0.3em] text-red-500">Notificación</span>
+        <span className="text-sm font-black uppercase italic tracking-tighter text-white">
+          ¡PIEZA AÑADIDA!
+        </span>
+      </div>
+
+      <div className="ml-2 bg-white/5 p-2 rounded-lg">
+        <FileText className="h-5 w-5 text-slate-400" />
+      </div>
+    </div>
+  </div>
+)}
 
       <section id="tienda" className="pt-32 pb-24 bg-white relative overflow-hidden">
         
