@@ -1,7 +1,7 @@
 "use client"
 
 import { Badge } from "@/components/ui/badge"
-import { ChevronRight, ArrowUpRight } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
 import Image from "next/image"
 
 export function ServicesSection() {
@@ -33,43 +33,48 @@ export function ServicesSection() {
   ]
 
   return (
-    <section id="services" className="py-24 md:py-32 bg-slate-50 overflow-hidden">
-      <div className="container mx-auto px-6">
-        
-        {/* --- HEADER INDUSTRIAL --- */}
-        <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-20 md:mb-32">
-          <div className="max-w-3xl">
-            <Badge className="mb-6 px-4 py-1.5 border-red-200 text-red-600 bg-red-50 text-xs font-black uppercase tracking-[0.2em] rounded-sm">
-              CAPACIDAD TÉCNICA
-            </Badge>
-            
-            <h2 className="text-6xl md:text-8xl lg:text-9xl font-black text-slate-950 tracking-tighter leading-[0.8] uppercase mb-8">
-              NUESTROS <br />
-              <span className="text-red-600 italic inline-block transform -skew-x-6">SERVICIOS.</span>
-            </h2>
-          </div>
+    // AJUSTE: pt-12 (reducido) y pb-12 (reducido) para minimizar el espacio en blanco con la sección de abajo
+    <section id="services" className="pt-12 pb-12 md:pt-16 md:pb-20 bg-white relative overflow-hidden selection:bg-red-100">
 
-          <div className="max-w-md pb-4">
-            <p className="text-xl text-slate-600 leading-tight font-medium border-l-4 border-red-600 pl-6 uppercase">
-              Seis años redefiniendo la <span className="text-slate-900 font-bold">resistencia industrial</span> en polímeros y caucho.
-            </p>
-          </div>
+      {/* --- FONDO MODERNO DISPERSO --- */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.05]" aria-hidden="true">
+        {/* Usamos top negativo para conectar con lo que esté arriba */}
+        <img src="/images/logo.png" className="absolute top-[-5%] left-[10%] w-48 rotate-[-12deg] blur-[1px]" alt="" />
+        <img src="/images/logo.png" className="absolute top-[15%] right-[-5%] w-72 rotate-[25deg] blur-[2px]" alt="" />
+
+        <img src="/images/logo.png" className="absolute top-[40%] left-[-10%] w-96 rotate-[15deg] opacity-40" alt="" />
+        <img src="/images/logo.png" className="absolute top-[50%] right-[15%] w-32 rotate-[-45deg]" alt="" />
+
+        {/* Usamos bottom negativo para que el logo se desvanezca hacia la sección de Ventajas */}
+        <img src="/images/logo.png" className="absolute bottom-[5%] left-[5%] w-64 rotate-[10deg] blur-[1px]" alt="" />
+        <img src="/images/logo.png" className="absolute bottom-[-5%] right-[20%] w-40 rotate-[-12deg]" alt="" />
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
+
+        {/* --- HEADER CENTRADO --- */}
+        {/* --- HEADER CENTRADO (IGUAL A VENTAJAS) --- */}
+        <div className="text-center max-w-4xl mx-auto mb-12 md:mb-16 w-full">
+          <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] uppercase italic text-slate-950">
+            NUESTROS <br />
+            <span className="text-red-600 not-italic">
+              SERVICIOS.
+            </span>
+          </h2>
         </div>
 
         {/* --- GRID DE SERVICIOS --- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {services.map((service, index) => (
-            <div key={index} className="group relative flex flex-col bg-white p-2 rounded-2xl border border-slate-200 hover:border-red-500 transition-all duration-500 hover:shadow-[0_30px_60px_-15px_rgba(230,46,46,0.15)]">
-              
-              {/* Contenedor de Imagen */}
-              <div className="relative h-72 w-full rounded-xl overflow-hidden mb-8">
-                <div className="absolute inset-0 bg-slate-950/20 group-hover:bg-red-900/40 transition-colors duration-500 z-10" />
-                
-                {/* Número de Servicio (Impacto Visual) */}
-                <span className="absolute top-4 right-4 text-white/40 font-black text-4xl z-20 group-hover:text-white transition-colors">
+            <div
+              key={index}
+              className="group relative flex flex-col bg-white/90 backdrop-blur-sm p-3 rounded-3xl border border-slate-200 hover:border-red-500 transition-all duration-500 hover:shadow-[0_30px_60px_-15px_rgba(230,46,46,0.12)] hover:-translate-y-2"
+            >
+              <div className="relative h-60 w-full rounded-2xl overflow-hidden mb-6 shadow-inner">
+                <div className="absolute inset-0 bg-slate-950/10 group-hover:bg-red-600/10 transition-colors duration-500 z-10" />
+                <span className="absolute top-5 left-5 text-white font-black text-4xl z-20 group-hover:scale-110 transition-transform duration-500 opacity-60">
                   {service.id}
                 </span>
-
                 <Image
                   src={service.image}
                   alt={service.title}
@@ -78,22 +83,18 @@ export function ServicesSection() {
                 />
               </div>
 
-              {/* Contenido de Texto */}
               <div className="px-4 pb-6 flex-grow flex flex-col">
-                <h3 className="text-2xl font-black text-slate-950 tracking-tight leading-none uppercase mb-4 group-hover:text-red-600 transition-colors">
+                <h3 className="text-xl font-black text-slate-950 tracking-tighter leading-none uppercase mb-3 group-hover:text-red-600 transition-colors italic">
                   {service.title}
                 </h3>
-
-                <p className="text-sm text-slate-600 leading-relaxed mb-8 flex-grow">
+                <p className="text-[13px] text-slate-500 leading-relaxed mb-6 flex-grow font-medium text-left">
                   {service.description}
                 </p>
-                
-                {/* Botón Call to Action */}
-                <div className="flex items-center justify-between group/btn cursor-pointer">
-                  <span className="text-slate-950 font-black text-xs tracking-widest uppercase group-hover/btn:text-red-600 transition-colors">
-                    VER DETALLES
+                <div className="flex items-center justify-between pt-6 border-t border-slate-100 group/btn">
+                  <span className="text-slate-900 font-black text-[10px] tracking-widest uppercase group-hover/btn:text-red-600 transition-colors">
+                    SOLICITAR FICHA
                   </span>
-                  <div className="h-10 w-10 rounded-full bg-slate-100 group-hover:bg-red-600 flex items-center justify-center transition-colors">
+                  <div className="h-10 w-10 rounded-xl bg-slate-50 group-hover:bg-red-600 flex items-center justify-center transition-all duration-500 group-hover:rotate-12">
                     <ArrowUpRight className="h-5 w-5 text-slate-950 group-hover:text-white transition-colors" />
                   </div>
                 </div>
