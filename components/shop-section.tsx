@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
-import { Eye, Search, FileText, X } from "lucide-react"
+import { Eye, Search, FileText, X, Zap, ShieldCheck, Headphones } from "lucide-react"
 import { QuoteCart } from "./quote-cart"
 import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "@/components/ui/dialog"
 
@@ -19,205 +19,39 @@ export function ShopSection() {
   const [showAddedAlert, setShowAddedAlert] = useState(false)
 
   const products = [
-    {
-      id: 1,
-      name: "SLIDING PIECE",
-      partNumber: "0105 07001 / 1612007",
-      image: "/images/Sliding.jpg",
-    },
-    {
-      id: 2,
-      name: "SLIDING",
-      partNumber: "3128 3039 30",
-      image: "/images/Sliding2.jpg",
-    },
-    {
-      id: 3,
-      name: "DOWELL",
-      partNumber: "0105 16001",
-      image: "/images/Dowell1.jpg",
-    },
-    {
-      id: 4,
-      name: "BUFFER",
-      partNumber: "263 634 18",
-      image: "/images/Buffer1.jpg",
-    },
-    {
-      id: 5,
-      name: "PLACA DESLIZANTE",
-      partNumber: "0105 07009",
-      image: "/images/PlacaDeslizante1.jpg",
-    },
-    {
-      id: 6,
-      name: "CLAVIJA RECTANGULAR",
-      partNumber: "0105 16004 / 1612013",
-      image: "/images/ClavijaRectangular.jpg",
-    },
-    {
-      id: 7,
-      name: "CLAVIJA CUADRADA",
-      partNumber: "0138 50001 / 1612003",
-      image: "/images/ClavijaCuadrada.jpg",
-    },
-    {
-      id: 8,
-      name: "SPACER",
-      partNumber: "3128 3141 05",
-      image: "/images/Spacer.jpg",
-    },
-    {
-      id: 9,
-      name: "ANILLO DE GOMA CON CANAL",
-      partNumber: "0105 15391 / 1612017",
-      image: "/images/AnilloC.jpg",
-    },
-    {
-      id: 10,
-      name: "ANILLO DE GOMA SIN CANAL",
-      partNumber: "0105 15480 / 1612018",
-      image: "/images/AnilloS.jpg",
-    },
-    {
-      id: 11,
-      name: "BUSHING",
-      partNumber: "3128 0020 90",
-      image: "/images/Bushing.jpg",
-    },
-    {
-      id: 12,
-      name: "MORDAZA PROTECTOR",
-      partNumber: "3128 3092 70, 71, 72, 73",
-      image: "/images/MordazaP.jpg",
-    },
-    {
-      id: 13,
-      name: "DISK",
-      partNumber: "3128 3092 24",
-      image: "/images/Disk.jpg",
-    },
-    {
-      id: 14,
-      name: "DOWELL RIÑON",
-      partNumber: "3128 3035 27",
-      image: "/images/Dowell3.jpg",
-    },
-    {
-      id: 15,
-      name: "DOWELL PASTEL",
-      partNumber: "3125 0634 00",
-      image: "/images/Dowell4.jpg",
-    },
-    {
-      id: 16,
-      name: "ABRAZADERA CLAMP",
-      partNumber: "3128 3406 87",
-      image: "/images/AbrazaderaV.jpg",
-    },
-    {
-      id: 17,
-      name: "HOSE DRUM",
-      partNumber: "3128 0475 09",
-      image: "/images/HoseDrum.jpg",
-    },
-    {
-      id: 18,
-      name: "LIP SEAL",
-      partNumber: "0130 99003 / 86223930",
-      image: "/images/SelloAgua.jpg",
-    },
-    {
-      id: 19,
-      name: "RING SEAL",
-      partNumber: "86804291 / 0410 10180",
-      image: "/images/RingSeal.jpg",
-    },
-    {
-      id: 20,
-      name: "SELLO",
-      partNumber: "3115 2333 00",
-      image: "/images/Sello .jpg",
-    },
-    {
-      id: 21,
-      name: "PLATE",
-      partNumber: "3128 3021 13",
-      image: "/images/Plate.jpg",
-    },
-    {
-      id: 22,
-      name: "PROTECTOR DE NITRILO",
-      partNumber: "3128 3094 40",
-      image: "/images/Protector.jpg",
-    },
-    {
-      id: 23,
-      name: "PULLEY WHELL",
-      partNumber: "3128 0784 30",
-      image: "/images/PulleyWhell.jpg",
-    },
-    {
-      id: 24,
-      name: "SHOTCRETERA",
-      partNumber: "",
-      image: "/images/Shotcretera.jpg",
-    },
-    {
-      id: 25,
-      name: "SEAL",
-      partNumber: "3128 2166 00",
-      image: "/images/Seal1.jpg",
-    },
-    {
-      id: 26,
-      name: "SEAL-Q'TY 80EA",
-      partNumber: "3128 3012 39",
-      image: "/images/Seal2.jpg",
-    },
-    {
-      id: 27,
-      name: "LOCK BUFFER TOPE",
-      partNumber: "3315 1419 00",
-      image: "/images/Lock.jpg",
-    },
-    {
-      id: 28,
-      name: "SHIELD HC28",
-      partNumber: "86778644",
-      image: "/images/Shield1.jpg",
-    },
-    {
-      id: 29,
-      name: "SHIELD R-32",
-      partNumber: "0105 15304",
-      image: "/images/Shield2.jpg",
-    },
-    {
-      id: 30,
-      name: "TOBERA",
-      partNumber: "E528970",
-      image: "/images/Shotcretera2.jpg",
-    },
-    {
-      id: 31,
-      name: "SLIDING PIECE",
-      partNumber: "3128 3246 24",
-      image: "/images/Sliding3.jpg",
-    },
-    {
-      id: 32,
-      name: "SLIDING SANDVIK",
-      partNumber: "330 016 98",
-      image: "/images/Sliding4.jpg",
-    },
-    {
-      id: 33,
-      name: "TRABADOR DE CABLE",
-      partNumber: "0707 14001 / 0707 14002 / 0707 14017",
-      image: "/images/Trabador.jpg",
-    },
-
+    { id: 1, name: "SLIDING PIECE", partNumber: "0105 07001 / 1612007", image: "/images/Sliding.jpg" },
+    /**{ id: 2, name: "SLIDING", partNumber: "3128 3039 30", image: "/images/Sliding2.jpg" },**/
+    { id: 3, name: "DOWELL", partNumber: "0105 16001", image: "/images/Dowell1.jpg" },
+    { id: 4, name: "BUFFER", partNumber: "263 634 18", image: "/images/Buffer1.jpg" },
+    { id: 5, name: "PLACA DESLIZANTE", partNumber: "0105 07009", image: "/images/PlacaDeslizante1.jpg" },
+    { id: 6, name: "CLAVIJA RECTANGULAR", partNumber: "0105 16004 / 1612013", image: "/images/ClavijaRectangular.jpg" },
+    { id: 7, name: "CLAVIJA CUADRADA", partNumber: "0138 50001 / 1612003", image: "/images/ClavijaCuadrada.jpg" },
+    { id: 8, name: "SPACER", partNumber: "3128 3141 05", image: "/images/Spacer.jpg" },
+    { id: 9, name: "ANILLO DE GOMA CON CANAL", partNumber: "0105 15391 / 1612017", image: "/images/AnilloC.jpg" },
+    { id: 10, name: "ANILLO DE GOMA SIN CANAL", partNumber: "0105 15480 / 1612018", image: "/images/AnilloS.jpg" },
+    { id: 11, name: "BUSHING", partNumber: "3128 0020 90", image: "/images/Bushing.jpg" },
+    { id: 12, name: "MORDAZA PROTECTOR", partNumber: "3128 3092 70, 71, 72, 73", image: "/images/MordazaP.jpg" },
+    { id: 13, name: "DISK", partNumber: "3128 3092 24", image: "/images/Disk.jpg" },
+    { id: 14, name: "DOWELL RIÑON", partNumber: "3128 3035 27", image: "/images/Dowell3.jpg" },
+    { id: 15, name: "DOWELL PASTEL", partNumber: "3125 0634 00", image: "/images/Dowell4.jpg" },
+    { id: 16, name: "ABRAZADERA CLAMP", partNumber: "3128 3406 87", image: "/images/AbrazaderaV.jpg" },
+    { id: 17, name: "HOSE DRUM", partNumber: "3128 0475 09", image: "/images/HoseDrum.jpg" },
+    { id: 18, name: "LIP SEAL", partNumber: "0130 99003 / 86223930", image: "/images/SelloAgua.jpg" },
+    { id: 19, name: "RING SEAL", partNumber: "86804291 / 0410 10180", image: "/images/RingSeal.jpg" },
+    { id: 20, name: "SELLO", partNumber: "3115 2333 00", image: "/images/Sello .jpg" },
+    { id: 21, name: "PLATE", partNumber: "3128 3021 13", image: "/images/Plate.jpg" },
+    { id: 22, name: "PROTECTOR DE NITRILO", partNumber: "3128 3094 40", image: "/images/Protector.jpg" },
+    { id: 23, name: "PULLEY WHELL", partNumber: "3128 0784 30", image: "/images/PulleyWhell.jpg" },
+    { id: 24, name: "SHOTCRETERA", partNumber: "", image: "/images/Shotcretera.jpg" },
+    { id: 25, name: "SEAL", partNumber: "3128 2166 00", image: "/images/Seal1.jpg" },
+    { id: 26, name: "SEAL-Q'TY 80EA", partNumber: "3128 3012 39", image: "/images/Seal2.jpg" },
+    { id: 27, name: "LOCK BUFFER TOPE", partNumber: "3315 1419 00", image: "/images/Lock.jpg" },
+    { id: 28, name: "SHIELD HC28", partNumber: "86778644", image: "/images/Shield1.jpg" },
+    { id: 29, name: "SHIELD R-32", partNumber: "0105 15304", image: "/images/Shield2.jpg" },
+    { id: 30, name: "TOBERA", partNumber: "E528970", image: "/images/Shotcretera2.jpg" },
+    { id: 31, name: "SLIDING PIECE", partNumber: "3128 3246 24", image: "/images/Sliding3.jpg" },
+    { id: 32, name: "SLIDING SANDVIK", partNumber: "330 016 98", image: "/images/Sliding4.jpg" },
+    { id: 33, name: "TRABADOR DE CABLE", partNumber: "0707 14001 / 0707 14002 / 0707 14017", image: "/images/Trabador.jpg" },
   ]
 
   const addToQuote = (product: (typeof products)[0]) => {
@@ -229,20 +63,13 @@ export function ShopSection() {
     } else {
       setQuoteItems([
         ...quoteItems,
-        {
-          id: product.id,
-          name: product.name,
-          partNumber: product.partNumber,
-          quantity: 1,
-        },
+        { id: product.id, name: product.name, partNumber: product.partNumber, quantity: 1 },
       ])
     }
-    // MOSTRAR ALERTA TEMPORAL
     setShowAddedAlert(true)
     setTimeout(() => setShowAddedAlert(false), 1500)
   }
 
-  // Filter products based on search term only
   const filteredProducts = products.filter((product) => {
     return (
       product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -252,95 +79,86 @@ export function ShopSection() {
 
   return (
     <>
-    {showAddedAlert && (
-  <div className="fixed top-6 right-4 sm:right-8 z-[9999] bg-green-600/80 text-white px-6 py-3 rounded-lg shadow-lg text-base sm:text-lg font-semibold animate-fade-in backdrop-blur-md"
-    style={{ pointerEvents: "none" }}
-  >
-    ¡Producto agregado al carrito!
-  </div>
-)}
-      <section id="tienda" className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      {showAddedAlert && (
+        <div className="fixed top-6 right-4 sm:right-8 z-[9999] bg-red-600/90 text-white px-6 py-3 rounded-lg shadow-lg text-base sm:text-lg font-black animate-in fade-in slide-in-from-top-4 duration-300 backdrop-blur-md">
+          ¡AGREGADO A TU COTIZACIÓN!
+        </div>
+      )}
+
+      <section id="tienda" className="pt-32 pb-24 bg-white relative overflow-hidden">
+        
+        {/* --- EL MOSAICO DE MARCA ULTRA-DENSIFICADO --- */}
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.04] md:opacity-[0.06]" aria-hidden="true">
+          <img src="/images/logo.png" className="absolute top-[5%] left-[5%] w-32 md:w-64 rotate-12 blur-[1px]" alt="" />
+          <img src="/images/logo.png" className="absolute top-[15%] right-[10%] w-28 md:w-44 -rotate-12 blur-[2px]" alt="" />
+          <img src="/images/logo.png" className="absolute top-[40%] left-[45%] w-24 md:w-36 rotate-45 blur-[3px]" alt="" />
+          <img src="/images/logo.png" className="absolute top-[60%] left-[-5%] w-52 md:w-80 -rotate-12 blur-[1px]" alt="" />
+          <img src="/images/logo.png" className="absolute bottom-[10%] right-[15%] w-40 md:w-60 rotate-[-20deg] blur-[2px]" alt="" />
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
+          
+          {/* --- HEADER ESTILO EMAPOL --- */}
           <div className="text-center mb-16">
-            <Badge variant="outline" className="mb-4">
-              Nuestra Tienda
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Repuestos Industriales de Calidad</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Encuentra los repuestos y componentes industriales que necesitas. Solicita tu cotización personalizada con
-              nuestros especialistas.
-            </p>
+            <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] uppercase italic text-slate-950 mb-8">
+              REPUESTOS <br />
+              <span className="text-red-600 not-italic">EMAPOL.</span>
+            </h2>
           </div>
 
-          {/* Search Bar */}
-          <div className="max-w-2xl mx-auto mb-12">
-            <div className="relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+          {/* Search Bar - Estilo Industrial */}
+          <div className="max-w-3xl mx-auto mb-10">
+            <div className="relative group">
+              <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 text-slate-400 h-6 w-6 group-focus-within:text-red-600 transition-colors" />
               <Input
-                placeholder="Buscar por nombre o número de parte... (ej: sliding, 0105 16001)"
+                placeholder="BUSCAR POR NOMBRE O NÚMERO DE PARTE..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-12 h-14 text-lg border-2 border-gray-200 focus:border-blue-500"
+                className="pl-14 h-16 text-lg font-black uppercase tracking-wider border-2 border-slate-100 rounded-2xl focus:border-red-600 focus:ring-0 shadow-xl"
               />
             </div>
-            {searchTerm && (
-              <p className="text-sm text-gray-600 mt-2">
-                Mostrando {filteredProducts.length} resultado(s) para "{searchTerm}"
-              </p>
-            )}
           </div>
 
           {/* Products Grid */}
           {filteredProducts.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {filteredProducts.map((product) => (
-                <Card key={product.id} className="group hover:shadow-xl transition-all duration-300 overflow-hidden">
-                  <div className="relative">
-                    <div className="w-full h-48 bg-gray-50 flex items-center justify-center overflow-hidden rounded-t-lg">
+                <Card key={product.id} className="group relative border-0 bg-white shadow-[0_20px_50px_rgba(0,0,0,0.06)] rounded-[2rem] overflow-hidden transition-all duration-500 hover:-translate-y-3">
+                  <div className="relative pt-6 px-6">
+                    <div className="w-full h-56 bg-slate-50 flex items-center justify-center overflow-hidden rounded-[1.5rem] border border-slate-100 relative group/img">
                       <img
                         src={product.image || "/placeholder.svg"}
                         alt={product.name}
-                        className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                        className="max-w-[85%] max-h-[85%] object-contain transition-transform duration-500 group-hover/img:scale-110"
                       />
+                      <div className="absolute inset-0 bg-red-600/5 opacity-0 group-hover/img:opacity-100 transition-opacity" />
                     </div>
 
-                    {/* Quick Actions - Ojo expandible */}
-                    <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute top-8 right-8 opacity-0 group-hover:opacity-100 transition-all translate-x-4 group-hover:translate-x-0">
                       <Dialog
                         open={expandedImage === product.image}
                         onOpenChange={(open) => setExpandedImage(open ? product.image : null)}
                       >
                         <DialogTrigger asChild>
-                          <Button size="icon" variant="secondary" className="h-8 w-8 bg-white/90 hover:bg-white">
-                            <Eye className="h-4 w-4" />
+                          <Button size="icon" className="h-10 w-10 bg-white text-slate-950 hover:bg-red-600 hover:text-white shadow-xl rounded-xl">
+                            <Eye className="h-5 w-5" />
                           </Button>
                         </DialogTrigger>
-                        <DialogContent className="max-w-4xl w-full p-0 bg-transparent border-none">
-                          <DialogTitle className="sr-only">
-                            {product.name} - {product.partNumber}
-                          </DialogTitle>
-                          <div className="relative">
+                        <DialogContent className="max-w-4xl w-full p-0 bg-white border-none rounded-[2rem] overflow-hidden">
+                          <DialogTitle className="sr-only">{product.name}</DialogTitle>
+                          <div className="relative p-12 flex flex-col items-center">
                             <Button
-                              variant="secondary"
+                              variant="ghost"
                               size="icon"
-                              className="absolute top-4 right-4 z-10 bg-white/90 hover:bg-white"
+                              className="absolute top-6 right-6 hover:bg-red-50 text-slate-400 hover:text-red-600"
                               onClick={() => setExpandedImage(null)}
                             >
-                              <X className="h-4 w-4" />
+                              <X className="h-6 w-6" />
                             </Button>
-                            <div className="w-full max-h-[90vh] overflow-hidden rounded-lg bg-white">
-                              <img
-                                src={product.image || "/placeholder.svg"}
-                                alt={product.name}
-                                className="w-full h-full object-contain max-h-[70vh] p-4"
-                              />
-                              <div className="p-4 bg-white">
-                                <h3 className="text-xl font-bold text-slate-900 mb-2">{product.name}</h3>
-                                <p className="text-gray-600">
-                                  <span className="font-medium">NÚMERO DE PARTE:</span>
-                                  <span className="font-mono text-blue-600 ml-2">{product.partNumber}</span>
-                                </p>
-                              </div>
+                            <img src={product.image} alt={product.name} className="max-h-[60vh] object-contain mb-8" />
+                            <h3 className="text-4xl font-black text-slate-950 uppercase italic tracking-tighter mb-4">{product.name}</h3>
+                            <div className="px-6 py-2 bg-red-50 rounded-full text-red-600 font-mono font-bold tracking-widest uppercase">
+                              P/N: {product.partNumber}
                             </div>
                           </div>
                         </DialogContent>
@@ -348,139 +166,107 @@ export function ShopSection() {
                     </div>
                   </div>
 
-                  <CardHeader className="pb-3">
-                    <CardTitle className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                  <CardHeader className="pt-6 pb-2 px-8">
+                    <CardTitle className="text-xl font-black text-slate-950 uppercase italic leading-tight group-hover:text-red-600 transition-colors line-clamp-1">
                       {product.name}
                     </CardTitle>
-
-                    {/* Part Number */}
-                    <div className="text-sm text-gray-600">
-                      <span className="font-medium">NUMERO DE PARTE:</span>
-                      <br />
-                      <span className="font-mono text-blue-600">{product.partNumber}</span>
+                    <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mt-2">
+                      NÚMERO DE PARTE
+                    </div>
+                    <div className="font-mono text-sm text-red-600 font-bold bg-red-50/50 w-fit px-2 py-0.5 rounded-md mt-1">
+                      {product.partNumber || "CONSULTAR"}
                     </div>
                   </CardHeader>
 
-                  <CardContent className="pt-0">
-                    {/* Actions */}
-                    <div className="flex gap-2">
-                      <Button
-                        className="flex-1 bg-blue-600 hover:bg-blue-700 text-sm"
-                        onClick={() => addToQuote(product)}
-                      >
-                        <FileText className="h-4 w-4 mr-1" />
-                        COTIZAR
-                      </Button>
-                      <Dialog
-                        open={expandedImage === product.image}
-                        onOpenChange={(open) => setExpandedImage(open ? product.image : null)}
-                      >
-                        <DialogTrigger asChild>
-                          <Button variant="outline" size="icon">
-                            <Eye className="h-4 w-4" />
-                          </Button>
-                        </DialogTrigger>
-                        <DialogContent className="max-w-4xl w-full p-0 bg-transparent border-none">
-                          <DialogTitle className="sr-only">
-                            {product.name} - {product.partNumber}
-                          </DialogTitle>
-                          <div className="relative">
-                            <Button
-                              variant="secondary"
-                              size="icon"
-                              className="absolute top-4 right-4 z-10 bg-white/90 hover:bg-white"
-                              onClick={() => setExpandedImage(null)}
-                            >
-                              <X className="h-4 w-4" />
-                            </Button>
-                            <div className="w-full max-h-[90vh] overflow-hidden rounded-lg bg-white">
-                              <img
-                                src={product.image || "/placeholder.svg"}
-                                alt={product.name}
-                                className="w-full h-full object-contain max-h-[70vh] p-4"
-                              />
-                              <div className="p-4 bg-white">
-                                <h3 className="text-xl font-bold text-slate-900 mb-2">{product.name}</h3>
-                                <p className="text-gray-600">
-                                  <span className="font-medium">NÚMERO DE PARTE:</span>
-                                  <span className="font-mono text-blue-600 ml-2">{product.partNumber}</span>
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </DialogContent>
-                      </Dialog>
-                    </div>
+                  <CardContent className="pt-4 pb-8 px-8">
+                    <Button
+                      className="w-full bg-slate-950 hover:bg-red-600 text-white font-black text-xs tracking-widest rounded-xl h-12 transition-all shadow-lg"
+                      onClick={() => addToQuote(product)}
+                    >
+                      <FileText className="h-4 w-4 mr-2" />
+                      COTIZAR AHORA
+                    </Button>
                   </CardContent>
+                  <div className="absolute bottom-0 left-0 w-1.5 h-0 bg-red-600 transition-all duration-500 group-hover:h-full" />
                 </Card>
               ))}
             </div>
           ) : (
-            <div className="text-center py-12">
-              <div className="text-gray-400 mb-4">
-                <Search className="h-16 w-16 mx-auto mb-4" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-600 mb-2">No se encontraron productos</h3>
-              <p className="text-gray-500">
-                Intenta con otros términos de búsqueda como "sliding", "sello" o números de parte como "SP-2024-001".
-              </p>
-              <Button variant="outline" className="mt-4" onClick={() => setSearchTerm("")}>
-                Limpiar búsqueda
-              </Button>
+            <div className="text-center py-20 bg-slate-50 rounded-[3rem] border-2 border-dashed border-slate-200">
+              <Search className="h-20 w-20 mx-auto mb-6 text-slate-200" />
+              <h3 className="text-2xl font-black text-slate-950 uppercase italic">Sin resultados</h3>
+              <p className="text-slate-500 mt-2 font-medium">No encontramos "{searchTerm}" en nuestro inventario.</p>
+              <Button variant="ghost" className="mt-6 text-red-600 font-black" onClick={() => setSearchTerm("")}>LIMPIAR BÚSQUEDA</Button>
             </div>
           )}
 
-          {/* Features */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 pt-16 border-t">
-            <div className="text-center">
-              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <FileText className="h-8 w-8 text-blue-600" />
+          {/* Features Industriales */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mt-24 pt-16 border-t border-slate-100">
+            <div className="flex flex-col items-center text-center group">
+              <div className="bg-red-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-xl shadow-red-200 group-hover:-translate-y-2 transition-transform">
+                <Zap className="h-8 w-8 text-white fill-white" />
               </div>
-              <h3 className="text-lg font-semibold text-slate-900 mb-2">Cotización Rápida</h3>
-              <p className="text-gray-600">Respuesta en menos de 24 horas</p>
+              <h3 className="text-xl font-black text-slate-950 uppercase italic tracking-tighter mb-2">Respuesta Inmediata</h3>
+              <p className="text-slate-500 text-sm font-medium uppercase leading-tight">Cotizaciones procesadas en menos de 24 horas</p>
             </div>
 
-            <div className="text-center">
-              <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Eye className="h-8 w-8 text-green-600" />
+            <div className="flex flex-col items-center text-center group">
+              <div className="bg-slate-950 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-xl shadow-slate-200 group-hover:-translate-y-2 transition-transform">
+                <ShieldCheck className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-lg font-semibold text-slate-900 mb-2">Repuestos Originales</h3>
-              <p className="text-gray-600">Garantía de calidad certificada</p>
+              <h3 className="text-xl font-black text-slate-950 uppercase italic tracking-tighter mb-2">Garantía Total</h3>
+              <p className="text-slate-500 text-sm font-medium uppercase leading-tight">Piezas fabricadas bajo estándares industriales</p>
             </div>
 
-            <div className="text-center">
-              <div className="bg-orange-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Search className="h-8 w-8 text-orange-600" />
+            <div className="flex flex-col items-center text-center group">
+              <div className="bg-red-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-xl shadow-red-200 group-hover:-translate-y-2 transition-transform">
+                <Headphones className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-lg font-semibold text-slate-900 mb-2">Asesoría Técnica</h3>
-              <p className="text-gray-600">Especialistas disponibles 24/7</p>
+              <h3 className="text-xl font-black text-slate-950 uppercase italic tracking-tighter mb-2">Soporte Crítico</h3>
+              <p className="text-slate-500 text-sm font-medium uppercase leading-tight">Asesoría técnica para minería 24/7</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Quote Notification Button - ROJO */}
-      {quoteItems.length > 0 && (
-        <div className="fixed bottom-6 right-6 z-50">
-          <Button
-            onClick={() => setShowQuoteCart(true)}
-            className="bg-red-500 hover:bg-red-600 text-white rounded-full h-14 w-14 shadow-xl relative"
-          >
-            <FileText className="h-6 w-6" />
-            <span className="absolute -top-2 -right-2 bg-red-700 text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-bold">
-              {quoteItems.length}
-            </span>
-          </Button>
-        </div>
-      )}
+{/* --- BOTÓN FLOTANTE DE COTIZACIÓN (AJUSTE MÓVIL) --- */}
+{quoteItems.length > 0 && (
+  <div className="fixed bottom-32 right-0 z-[9999] animate-in fade-in slide-in-from-right-10 duration-500">
+    
+    {/* Resplandor sutil */}
+    <span className="absolute inset-0 rounded-l-full bg-red-600/15 animate-pulse blur-lg" />
+    
+    <Button
+      onClick={() => setShowQuoteCart(true)}
+      // MÓVIL: h-14 w-14 (Círculo) | DESKTOP: h-16 w-auto (Pestaña)
+      className="relative group bg-slate-950 hover:bg-red-700 text-white rounded-l-full h-14 md:h-16 w-14 md:w-auto px-0 md:px-6 flex items-center justify-center gap-0 md:gap-4 shadow-[-10px_0_40px_rgba(0,0,0,0.4)] border-r-4 border-red-600 transition-all duration-300 active:scale-95"
+    >
+      {/* Icono Principal - Centrado en móvil */}
+      <div className="bg-red-600 p-2 md:p-2.5 rounded-full group-hover:rotate-12 transition-transform duration-300 shadow-md">
+        <FileText className="h-5 w-5 md:h-6 md:w-6 text-white" />
+      </div>
 
-      {/* Quote Cart Modal */}
-      <QuoteCart
-        isOpen={showQuoteCart}
-        onClose={() => setShowQuoteCart(false)}
-        items={quoteItems}
-        onUpdateItems={setQuoteItems}
-      />
+      {/* Separador - Solo visible en Desktop */}
+      <div className="hidden md:block w-px h-8 bg-slate-700" />
+
+      {/* Contador - En móvil flota sobre el icono, en desktop va al lado */}
+      <div className="flex flex-col items-center justify-center relative">
+        {/* Etiqueta "Ítems" - Oculta en móvil */}
+        <span className="hidden md:block text-[10px] font-black uppercase tracking-[0.2em] text-red-500 mb-0.5">Ítems</span>
+        
+        <div className="flex items-end gap-1">
+          {/* En móvil el número es un badge pequeño arriba del icono, en desktop es el número grande */}
+          <span className="absolute -top-10 -left-8 md:relative md:top-0 md:left-0 bg-white md:bg-transparent text-slate-950 md:text-white text-[11px] md:text-3xl font-black rounded-full md:rounded-none h-6 w-6 md:h-auto md:w-auto flex items-center justify-center border-2 border-red-600 md:border-0 italic tracking-tighter leading-none">
+            {String(quoteItems.length).padStart(2, '0')}
+          </span>
+          <Zap className="hidden md:block h-4 w-4 text-red-500 fill-red-500 mb-1 opacity-70" />
+        </div>
+      </div>
+    </Button>
+  </div>
+)}
+
+      <QuoteCart isOpen={showQuoteCart} onClose={() => setShowQuoteCart(false)} items={quoteItems} onUpdateItems={setQuoteItems} />
     </>
   )
 }
