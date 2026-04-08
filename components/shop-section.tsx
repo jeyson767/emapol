@@ -87,14 +87,29 @@ export function ShopSection() {
 
       <section id="tienda" className="pt-32 pb-24 bg-white relative overflow-hidden">
         
-        {/* --- EL MOSAICO DE MARCA ULTRA-DENSIFICADO --- */}
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.04] md:opacity-[0.06]" aria-hidden="true">
-          <img src="/images/logo.png" className="absolute top-[5%] left-[5%] w-32 md:w-64 rotate-12 blur-[1px]" alt="" />
-          <img src="/images/logo.png" className="absolute top-[15%] right-[10%] w-28 md:w-44 -rotate-12 blur-[2px]" alt="" />
-          <img src="/images/logo.png" className="absolute top-[40%] left-[45%] w-24 md:w-36 rotate-45 blur-[3px]" alt="" />
-          <img src="/images/logo.png" className="absolute top-[60%] left-[-5%] w-52 md:w-80 -rotate-12 blur-[1px]" alt="" />
-          <img src="/images/logo.png" className="absolute bottom-[10%] right-[15%] w-40 md:w-60 rotate-[-20deg] blur-[2px]" alt="" />
-        </div>
+        {/* --- EL MOSAICO DE MARCA ULTRA-DENSIFICADO (EDICIÓN TIENDA) --- */}
+<div className="absolute inset-0 z-0 pointer-events-none opacity-[0.04] md:opacity-[0.07]" aria-hidden="true">
+  {/* Fila Superior */}
+  <img src="/images/logo.png" className="absolute top-[2%] left-[10%] w-32 md:w-64 rotate-12 blur-[1px]" alt="" />
+  <img src="/images/logo.png" className="absolute top-[8%] right-[5%] w-28 md:w-44 -rotate-12 blur-[2px]" alt="" />
+  
+  {/* Bloque Central Superior */}
+  <img src="/images/logo.png" className="absolute top-[20%] left-[40%] w-24 md:w-36 rotate-[45deg] blur-[3px]" alt="" />
+  <img src="/images/logo.png" className="absolute top-[25%] right-[30%] w-36 md:w-56 -rotate-12 blur-[1px]" alt="" />
+
+  {/* Laterales Medios (Muy grandes para llenar espacio) */}
+  <img src="/images/logo.png" className="absolute top-[45%] left-[-10%] w-64 md:w-[500px] rotate-[15deg] blur-[5px]" alt="" />
+  <img src="/images/logo.png" className="absolute top-[50%] right-[-5%] w-52 md:w-80 -rotate-45 blur-[2px]" alt="" />
+
+  {/* Bloque Central Inferior */}
+  <img src="/images/logo.png" className="absolute top-[70%] left-[25%] w-40 md:w-60 rotate-[20deg] blur-[3px]" alt="" />
+  <img src="/images/logo.png" className="absolute top-[75%] right-[40%] w-32 md:w-48 -rotate-12 blur-[1px]" alt="" />
+
+  {/* Fila Base (Cerca del final) */}
+  <img src="/images/logo.png" className="absolute bottom-[10%] left-[5%] w-48 md:w-72 rotate-12 blur-[2px]" alt="" />
+  <img src="/images/logo.png" className="absolute bottom-[15%] right-[15%] w-40 md:w-60 -rotate-[20deg] blur-[4px]" alt="" />
+  <img src="/images/logo.png" className="absolute bottom-[2%] left-[50%] -translate-x-1/2 w-32 md:w-56 rotate-[10deg] blur-[1px]" alt="" />
+</div>
 
         <div className="container mx-auto px-6 relative z-10">
           
