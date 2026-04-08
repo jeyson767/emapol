@@ -5,9 +5,7 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Badge } from "@/components/ui/badge"
-import { MapPin, Phone, Mail, Clock, Navigation, ExternalLink } from "lucide-react"
+import { MapPin, Phone, Mail, Clock, Navigation, Send, Zap, MessageCircle } from "lucide-react"
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -15,352 +13,212 @@ export function ContactSection() {
     company: "",
     email: "",
     phone: "",
-    service: "",
     message: "",
   })
 
   const [sending, setSending] = useState(false)
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
-  }
-
-  const handleServiceChange = (value: string) => {
-    setFormData({
-      ...formData,
-      service: value,
-    })
-  }
-
-  const validateForm = () => {
-    return (
-      formData.fullName.trim() &&
-      formData.email.trim() &&
-      formData.phone.trim() &&
-      formData.message.trim()
-    )
+    setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
   const sendToGmail = () => {
-    if (!validateForm()) {
-      alert("Por favor completa todos los campos obligatorios (Nombre, Email, Teléfono y Mensaje)")
+    if (!formData.fullName || !formData.email || !formData.phone || !formData.message) {
+      alert("Por favor completa los campos obligatorios")
       return
     }
     setSending(true)
     const subject = encodeURIComponent("Solicitud de Información - EMAPOL S.A.C")
-    const emailBody = `Estimados,
-
-Solicito más información sobre sus servicios de polímeros y caucho.
-
-DATOS DEL SOLICITANTE:
-- Nombre completo: ${formData.fullName}
-- Empresa: ${formData.company || "No especificado"}
-- Email: ${formData.email}
-- Teléfono: ${formData.phone}
-- Servicio de interés: ${formData.service || "No especificado"}
-
-MENSAJE:
-${formData.message}
-
-Quedo atento a su respuesta.
-
-Saludos cordiales,
-${formData.fullName}`
-
+    const emailBody = `Nombre: ${formData.fullName}\nEmpresa: ${formData.company}\nEmail: ${formData.email}\nTeléfono: ${formData.phone}\n\nMensaje:\n${formData.message}`
     const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=ventas@emapolsac.com&su=${subject}&body=${encodeURIComponent(emailBody)}`
     window.open(gmailUrl, "_blank")
-    setFormData({
-      fullName: "",
-      company: "",
-      email: "",
-      phone: "",
-      service: "",
-      message: "",
-    })
-    setSending(false)
-    alert("Solicitud enviada. Se abrirá Gmail para completar el envío.")
-  }
-
-  const sendByEmail = () => {
-    if (!validateForm()) {
-      alert("Por favor completa todos los campos obligatorios (Nombre, Email, Teléfono y Mensaje)")
-      return
-    }
-    setSending(true)
-    const subject = "Solicitud de Información - EMAPOL S.A.C"
-    const emailBody = `Estimados,
-
-Solicito más información sobre sus servicios de polímeros y caucho.
-
-DATOS DEL SOLICITANTE:
-- Nombre completo: ${formData.fullName}
-- Empresa: ${formData.company || "No especificado"}
-- Email: ${formData.email}
-- Teléfono: ${formData.phone}
-- Servicio de interés: ${formData.service || "No especificado"}
-
-MENSAJE:
-${formData.message}
-
-Quedo atento a su respuesta.
-
-Saludos cordiales,
-${formData.fullName}`
-
-    const mailtoUrl = `mailto:ventas@emapolsac.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`
-    window.location.href = mailtoUrl
-    setFormData({
-      fullName: "",
-      company: "",
-      email: "",
-      phone: "",
-      service: "",
-      message: "",
-    })
     setSending(false)
   }
 
   return (
-    <section id="contacto" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <Badge variant="outline" className="mb-4">
-            Contacto
-          </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-            ¿Necesita más información?
+    <section className="relative bg-white pt-44 pb-32 mb-20 overflow-hidden">
+
+      {/* --- MOSAICO DE FONDO --- */}
+      {/* --- MOSAICO DE FONDO REFORZADO --- */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.03] md:opacity-[0.05]" aria-hidden="true">
+        {/* Esquina superior izquierda */}
+        <img src="/images/logo.png" className="absolute top-[5%] left-[5%] w-32 md:w-64 rotate-12 blur-[1px]" alt="" />
+
+        {/* Centro derecha */}
+        <img src="/images/logo.png" className="absolute top-[35%] right-[8%] w-40 md:w-80 -rotate-12 blur-[2px]" alt="" />
+
+        {/* Esquina inferior izquierda */}
+        <img src="/images/logo.png" className="absolute bottom-[8%] left-[12%] w-36 md:w-72 rotate-[35deg] blur-[1px]" alt="" />
+
+        {/* Centro izquierda (Nuevo) */}
+        <img src="/images/logo.png" className="absolute top-[20%] left-[20%] w-24 md:w-48 -rotate-45 blur-[3px] opacity-50" alt="" />
+
+        {/* Superior derecha (Nuevo) */}
+        <img src="/images/logo.png" className="absolute top-[10%] right-[25%] w-28 md:w-56 rotate-[15deg] blur-[2px] opacity-40" alt="" />
+
+        {/* Inferior derecha (Nuevo) */}
+        <img src="/images/logo.png" className="absolute bottom-[15%] right-[20%] w-32 md:w-64 -rotate-[20deg] blur-[1.5px]" alt="" />
+
+        {/* Centro abajo (Nuevo) */}
+        <img src="/images/logo.png" className="absolute bottom-[5%] left-[45%] w-24 md:w-52 rotate-90 blur-[4px] opacity-30" alt="" />
+      </div>
+
+      <div className="container relative z-10 mx-auto px-4 max-w-6xl">
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-100 mb-4">
+            <Zap className="h-3 w-3 text-red-600 fill-red-600" />
+            <span className="text-[9px] font-black uppercase tracking-widest text-red-600">Soporte Técnico</span>
+          </div>
+          <h2 className="text-3xl md:text-5xl font-black text-slate-950 uppercase italic tracking-tighter leading-none">
+            ¿LISTO PARA <span className="text-red-600">CONECTAR?</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Nuestro equipo de expertos está listo para ayudarle con sus proyectos de polímeros y caucho.
-            <br />
-            Contáctenos y reciba una respuesta personalizada.
-          </p>
+          <p className="text-sm text-slate-500 font-medium mt-3">Respuesta técnica inmediata para sus proyectos industriales.</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {/* Información de contacto */}
-          <div className="space-y-6">
-            {/* Dirección */}
-            <div className="flex items-start space-x-4 p-6 bg-white rounded-lg shadow-sm border">
-              <div className="bg-blue-100 p-3 rounded-full">
-                <MapPin className="h-6 w-6 text-blue-600" />
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-slate-900 mb-2">Dirección</h3>
-                <p className="text-gray-600">Jr. José de la Mar Mza. H Lote. 3-3a</p>
-                <p className="text-gray-600">Sec. Rústico, Lurigancho - Chosica</p>
-                <p className="text-gray-600">Lima, Perú</p>
-                <p className="text-xs text-gray-500 mt-1">(Altura de la Empresa Hyundai)</p>
-              </div>
-            </div>
-            {/* Teléfono */}
-            <div className="flex items-start space-x-4 p-6 bg-white rounded-lg shadow-sm border">
-              <div className="bg-green-100 p-3 rounded-full">
-                <Phone className="h-6 w-6 text-green-600" />
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-slate-900 mb-2">Teléfono</h3>
-                <p className="text-gray-600">+51 952 474 660</p>
-                <p className="text-gray-600">+51 986 363 135</p>
-              </div>
-            </div>
-            {/* Email */}
-            <div className="flex items-start space-x-4 p-6 bg-white rounded-lg shadow-sm border">
-              <div className="bg-orange-100 p-3 rounded-full">
-                <Mail className="h-6 w-6 text-orange-600" />
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-slate-900 mb-2">Email</h3>
-                <p className="text-gray-600">emapol@emapolsac.com</p>
-                <p className="text-gray-600">ventas@emapolsac.com</p>
-              </div>
-            </div>
-            {/* Horarios */}
-            <div className="flex items-start space-x-4 p-6 bg-white rounded-lg shadow-sm border">
-              <div className="bg-purple-100 p-3 rounded-full">
-                <Clock className="h-6 w-6 text-purple-600" />
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-slate-900 mb-2">Horarios</h3>
-                <p className="text-gray-600">Lun - Vie: 9:00 AM - 6:00 PM</p>
-                <p className="text-gray-600">Sáb: 10:00 AM - 1:00 PM</p>
-              </div>
-            </div>
-          </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
-          {/* Formulario */}
-          <form
-            className="bg-white p-4 sm:p-6 md:p-8 rounded-lg shadow-sm border"
-            onSubmit={e => {
-              e.preventDefault()
-              sendToGmail()
-            }}
-            autoComplete="off"
-          >
-            <h3 className="text-2xl font-bold text-slate-900 mb-2">Solicitar más información</h3>
-            <p className="text-gray-600 mb-6">
-              Complete el formulario y nos pondremos en contacto con usted en menos de 24 horas.
-            </p>
-            <div className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Nombre completo <span className="text-red-500">*</span>
-                  </label>
-                  <Input
-                    name="fullName"
-                    placeholder="Su nombre completo"
-                    value={formData.fullName}
-                    onChange={handleInputChange}
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Empresa</label>
-                  <Input
-                    name="company"
-                    placeholder="Nombre de su empresa"
-                    value={formData.company}
-                    onChange={handleInputChange}
-                  />
-                </div>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Email <span className="text-red-500">*</span>
-                  </label>
-                  <Input
-                    name="email"
-                    type="email"
-                    placeholder="su.email@empresa.com"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Teléfono <span className="text-red-500">*</span>
-                  </label>
-                  <Input
-                    name="phone"
-                    type="tel"
-                    placeholder="+51 123 456 789"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    required
-                  />
-                </div>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Servicio de interés</label>
-                <Select value={formData.service} onValueChange={handleServiceChange}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Seleccione un servicio" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Repuestos de Polímeros">Repuestos de Polímeros</SelectItem>
-                    <SelectItem value="Repuestos de Caucho">Repuestos de Caucho</SelectItem>
-                    <SelectItem value="Diseño personalizado de repuestos">Diseño personalizado de repuestos</SelectItem>
-                    <SelectItem value="Fabricación Personalizada">Fabricación Personalizada</SelectItem>
-                    <SelectItem value="Mecanizado CNC">Mecanizado CNC</SelectItem>
-                    <SelectItem value="otro - especificar en mensaje">Otro - especificar en mensaje</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Mensaje <span className="text-red-500">*</span>
-                </label>
-                <Textarea
-                  name="message"
-                  placeholder="Describa sus necesidades o proyecto en detalle..."
-                  rows={4}
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <div className="flex flex-col sm:flex-row gap-3 pt-4">
-                <Button
-                  type="submit"
-                  className="flex-1 bg-red-600 hover:bg-red-700"
-                  disabled={sending}
-                >
-                  <Mail className="h-4 w-4 mr-2" />
-                  {sending ? "Enviando..." : "Enviar por Gmail"}
-                </Button>
-              </div>
-              <p className="text-xs text-gray-500 text-center">
-                * Campos obligatorios. Sus datos están protegidos y no serán compartidos con terceros.
-              </p>
-            </div>
-          </form>
-        </div>
+          {/* LADO IZQUIERDO: Info de contacto */}
+          <div className="lg:col-span-4 space-y-3">
 
-        {/* Sección de Ubicación - Responsive */}
-        <div className="mt-16">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-slate-900 mb-4">¿Cómo llegar a nuestras instalaciones?</h3>
-            <p className="text-gray-600">Encuentre fácilmente nuestra ubicación en Lurigancho, Lima</p>
-          </div>
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-100 p-4 sm:p-8 rounded-2xl border border-blue-200 shadow-lg">
-              <div className="text-center space-y-6">
-                <div className="flex justify-center">
-                  <div className="bg-blue-600 p-4 sm:p-6 rounded-full shadow-lg">
-                    <Navigation className="h-10 w-10 sm:h-12 sm:w-12 text-white" />
-                  </div>
-                </div>
-                <div className="space-y-3">
-                  <h4 className="text-xl sm:text-2xl font-bold text-slate-900">EMAPOL S.A.C</h4>
-                  <div className="text-base sm:text-lg text-gray-700 space-y-1">
-                    <p className="font-semibold">Jr. José de la Mar Mza. H Lote. 3-3a</p>
-                    <p>Sec. Rústico, Lurigancho - Lima, Perú</p>
-                    <p className="text-sm text-gray-600 italic">(Altura de la Empresa Hyundai)</p>
-                  </div>
-                </div>
-                <div className="pt-4">
+            {/* 1. PLANTA */}
+            <div className="flex items-center p-3 bg-white/80 backdrop-blur-sm border border-slate-100 rounded-2xl shadow-sm">
+              <div className="bg-red-50 p-3 rounded-xl mr-4">
+                <MapPin className="h-4 w-4 text-red-600" />
+              </div>
+              <div>
+                <h4 className="text-[9px] font-black uppercase tracking-widest text-slate-400 leading-none mb-1">Planta</h4>
+                <p className="text-slate-900 font-bold text-xs leading-tight">Av. La Paz Mz L Lote 30 Huachipa - La Capitana</p>
+              </div>
+            </div>
+
+            {/* 2. LÍNEAS (CON BOTONES DE WHATSAPP) */}
+            <div className="flex items-center p-3 bg-white/80 backdrop-blur-sm border border-slate-100 rounded-2xl shadow-sm">
+              <div className="bg-green-50 p-3 rounded-xl mr-4">
+                <MessageCircle className="h-4 w-4 text-green-600" />
+              </div>
+              <div className="flex-1">
+                <h4 className="text-[9px] font-black uppercase tracking-widest text-slate-400 leading-none mb-2">Chatea con nosotros</h4>
+                <div className="flex flex-wrap gap-2">
                   <Button
-                    size="lg"
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-                    onClick={() => window.open("https://maps.app.goo.gl/j9N9Q7msHEaQjWq8A", "_blank")}
+                    variant="outline"
+                    size="sm"
+                    onClick={() => window.open("https://wa.me/51952474660?text=Hola%20EMAPOL,%20solicito%20información.", "_blank")}
+                    className="h-7 px-2.5 text-[10px] font-bold border-green-200 hover:bg-green-600 hover:text-white transition-all rounded-lg flex items-center gap-1.5"
                   >
-                    <MapPin className="h-5 w-5 sm:h-6 sm:w-6 mr-3" />
-                    Ver Ubicación en Google Maps
-                    <ExternalLink className="h-4 w-4 sm:h-5 sm:w-5 ml-3" />
+                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
+                    VENTAS 1
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => window.open("https://wa.me/51932283242?text=Hola%20EMAPOL,%20solicito%20información.", "_blank")}
+                    className="h-7 px-2.5 text-[10px] font-bold border-green-200 hover:bg-green-600 hover:text-white transition-all rounded-lg flex items-center gap-1.5"
+                  >
+                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
+                    VENTAS 2
                   </Button>
                 </div>
-                <div className="bg-white/70 p-4 sm:p-6 rounded-xl border border-blue-200">
-                  <h5 className="font-semibold text-slate-900 mb-3 flex items-center justify-center">
-                    <Navigation className="h-5 w-5 mr-2 text-blue-600" />
-                    Instrucciones para llegar
-                  </h5>
-                  <div className="text-xs sm:text-sm text-gray-700 space-y-2">
-                    <p>
-                      📍 <strong>Referencia principal:</strong> Altura de la Empresa Hyundai
-                    </p>
-                    <p>
-                      🚗 <strong>En auto:</strong> Haga clic en el botón para abrir Google Maps y obtener direcciones
-                      paso a paso
-                    </p>
-                    <p>
-                      🚌 <strong>En transporte público:</strong> Google Maps le mostrará las mejores rutas disponibles
-                    </p>
-                  </div>
-                </div>
-                <div className="text-xs sm:text-sm text-gray-600">
-                  <p>
-                    💡 <strong>Tip:</strong> El botón abrirá Google Maps en una nueva ventana con nuestra ubicación
-                    exacta
-                  </p>
-                </div>
               </div>
             </div>
+
+            {/* 3. EMAIL */}
+            <div className="flex items-center p-3 bg-white/80 backdrop-blur-sm border border-slate-100 rounded-2xl shadow-sm">
+              <div className="bg-red-50 p-3 rounded-xl mr-4">
+                <Mail className="h-4 w-4 text-red-600" />
+              </div>
+              <div>
+                <h4 className="text-[9px] font-black uppercase tracking-widest text-slate-400 leading-none mb-1">Email</h4>
+                <p className="text-slate-900 font-bold text-xs leading-tight">ventas@emapolsac.com</p>
+              </div>
+            </div>
+
+            {/* 4. HORARIO */}
+            <div className="flex items-center p-3 bg-white/80 backdrop-blur-sm border border-slate-100 rounded-2xl shadow-sm">
+              <div className="bg-slate-100 p-3 rounded-xl mr-4">
+                <Clock className="h-4 w-4 text-slate-950" />
+              </div>
+              <div>
+                <h4 className="text-[9px] font-black uppercase tracking-widest text-slate-400 leading-none mb-1">Horario</h4>
+                <p className="text-slate-900 font-bold text-xs leading-tight">Lun-Vie: 8AM-6PM / Sáb: 9AM-12PM</p>
+              </div>
+            </div>
+
+            {/* Ubicación técnica con MARCADOR ROJO OBLIGATORIO */}
+            <div className="bg-slate-950 rounded-[2rem] overflow-hidden shadow-2xl border border-white/5 group mt-4">
+              <div className="w-full h-40 bg-slate-900 relative">
+                <iframe
+                  src="https://maps.google.com/maps?q=-12.019694,-76.919944&z=16&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, filter: 'grayscale(0.2) contrast(1.1)' }}
+                  allowFullScreen={false}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="group-hover:filter-none transition-all duration-500"
+                ></iframe>
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent pointer-events-none" />
+              </div>
+
+              <div className="p-5 flex items-center justify-between">
+                <div>
+                  <h3 className="text-sm font-black text-white uppercase italic tracking-tighter">
+                    UBICACIÓN <span className="text-red-600">ESTRATÉGICA</span>
+                  </h3>
+                  <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">
+                    Av. La Paz 102, Huachipa
+                  </p>
+                </div>
+                <Button
+                  onClick={() => window.open("https://maps.app.goo.gl/ds4iPu5XRM5Hrk8B8", "_blank")}
+                  className="h-10 w-10 bg-red-600 hover:bg-white hover:text-red-600 rounded-xl p-0 transition-all shadow-lg"
+                >
+                  <Navigation className="h-5 w-5" />
+                </Button>
+              </div>
+            </div>
+          </div>
+
+          {/* LADO DERECHO: Formulario */}
+          <div className="lg:col-span-8 lg:mt-12">
+            <form
+              onSubmit={e => { e.preventDefault(); sendToGmail(); }}
+              className="bg-slate-50/50 backdrop-blur-md p-8 rounded-[2rem] border border-slate-200 shadow-inner space-y-5"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div className="space-y-1">
+                  <label className="text-[9px] font-black text-slate-500 uppercase ml-2 tracking-widest">Nombre Completo *</label>
+                  <Input name="fullName" placeholder="Nombre" value={formData.fullName} onChange={handleInputChange} required className="bg-white border-none h-12 rounded-xl px-4 text-xs font-bold shadow-sm" />
+                </div>
+                <div className="space-y-1">
+                  <label className="text-[9px] font-black text-slate-500 uppercase ml-2 tracking-widest">Empresa</label>
+                  <Input name="company" placeholder="Empresa" value={formData.company} onChange={handleInputChange} className="bg-white border-none h-12 rounded-xl px-4 text-xs font-bold shadow-sm" />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div className="space-y-1">
+                  <label className="text-[9px] font-black text-slate-500 uppercase ml-2 tracking-widest">Email *</label>
+                  <Input name="email" type="email" placeholder="CORREO@EMPRESA.COM" value={formData.email} onChange={handleInputChange} required className="bg-white border-none h-12 rounded-xl px-4 text-xs font-bold shadow-sm" />
+                </div>
+                <div className="space-y-1">
+                  <label className="text-[9px] font-black text-slate-500 uppercase ml-2 tracking-widest">Teléfono *</label>
+                  <Input name="phone" placeholder="+51 9XX XXX XXX" value={formData.phone} onChange={handleInputChange} required className="bg-white border-none h-12 rounded-xl px-4 text-xs font-bold shadow-sm" />
+                </div>
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-[9px] font-black text-slate-500 uppercase ml-2 tracking-widest">Mensaje *</label>
+                <Textarea name="message" placeholder="DETALLES TÉCNICOS..." rows={4} value={formData.message} onChange={handleInputChange} required className="bg-white border-none rounded-xl p-4 text-xs font-bold shadow-sm resize-none" />
+              </div>
+
+              <Button
+                type="submit"
+                disabled={sending}
+                className="w-full bg-red-600 hover:bg-slate-950 text-white font-black text-[11px] tracking-[0.2em] h-14 rounded-xl transition-all shadow-lg"
+              >
+                {sending ? "ENVIANDO..." : "ENVIAR SOLICITUD A GMAIL"} <Send className="ml-3 h-4 w-4" />
+              </Button>
+            </form>
           </div>
         </div>
       </div>
