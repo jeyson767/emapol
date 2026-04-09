@@ -19,11 +19,6 @@
       "source": "/productos/(.*)",
       "destination": "/tienda",
       "permanent": true
-    },
-    {
-      "source": "/contacto",
-      "destination": "/contacto",
-      "permanent": true
     }
   ]
 }
