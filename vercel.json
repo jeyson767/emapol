@@ -1,0 +1,29 @@
+{
+  "redirects": [
+    {
+      "source": "/emapol-sac-2",
+      "destination": "/nosotros",
+      "permanent": true
+    },
+    {
+      "source": "/servicios",
+      "destination": "/#services",
+      "permanent": true
+    },
+    {
+      "source": "/productos",
+      "destination": "/tienda",
+      "permanent": true
+    },
+    {
+      "source": "/productos/(.*)",
+      "destination": "/tienda",
+      "permanent": true
+    },
+    {
+      "source": "/contacto",
+      "destination": "/contacto",
+      "permanent": true
+    }
+  ]
+}
