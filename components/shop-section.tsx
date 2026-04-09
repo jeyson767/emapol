@@ -106,7 +106,7 @@ export function ShopSection() {
         </div>
       )}
 
-      <section id="tienda" className="pt-32 pb-24 bg-white relative overflow-hidden">
+      <section id="productos" className="pt-32 pb-24 bg-white relative overflow-hidden">
 
         {/* --- EL MOSAICO DE MARCA ULTRA-DENSIFICADO (EDICIÓN TIENDA) --- */}
         <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.04] md:opacity-[0.07]" aria-hidden="true">

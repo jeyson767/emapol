@@ -9,10 +9,10 @@ export function Footer() {
 
   const navLinks = [
     { name: "Inicio", href: "/" },
-    { name: "Nosotros", href: "/#nosotros" }, // Añadimos /# para que funcione desde cualquier página
+    { name: "Nosotros", href: "/nosotros" }, 
     { name: "Blog", href: "/blog" },
-    { name: "Tienda", href: "/tienda" },
-    { name: "Contacto", href: "/#contacto" },
+    { name: "Repuestos", href: "/productos" },
+    { name: "Contacto", href: "/contacto" },
   ]
 
   return (
