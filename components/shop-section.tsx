@@ -1,6 +1,6 @@
 "use client"
 
-import { useState,} from "react"
+import { useState, } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -19,40 +19,39 @@ export function ShopSection() {
   const [showAddedAlert, setShowAddedAlert] = useState(false)
 
   const products = [
-    { id: 1, name: "SLIDING PIECE", partNumber: "0105 07001 / 1612007", image: "/images/Sliding.jpg" },
-    /**{ id: 2, name: "SLIDING", partNumber: "3128 3039 30", image: "/images/Sliding2.jpg" },**/
-    { id: 3, name: "DOWELL", partNumber: "0105 16001", image: "/images/Dowell1.jpg" },
-    { id: 4, name: "BUFFER", partNumber: "263 634 18", image: "/images/Buffer1.jpg" },
-    { id: 5, name: "PLACA DESLIZANTE", partNumber: "0105 07009", image: "/images/PlacaDeslizante1.jpg" },
-    { id: 6, name: "CLAVIJA RECTANGULAR", partNumber: "0105 16004 / 1612013", image: "/images/ClavijaRectangular.jpg" },
-    { id: 7, name: "CLAVIJA CUADRADA", partNumber: "0138 50001 / 1612003", image: "/images/ClavijaCuadrada.jpg" },
-    { id: 8, name: "SPACER", partNumber: "3128 3141 05", image: "/images/Spacer.jpg" },
-    { id: 9, name: "ANILLO DE GOMA CON CANAL", partNumber: "0105 15391 / 1612017", image: "/images/AnilloC.jpg" },
-    { id: 10, name: "ANILLO DE GOMA SIN CANAL", partNumber: "0105 15480 / 1612018", image: "/images/AnilloS.jpg" },
-    { id: 11, name: "BUSHING", partNumber: "3128 0020 90", image: "/images/Bushing.jpg" },
-    { id: 12, name: "MORDAZA PROTECTOR", partNumber: "3128 3092 70, 71, 72, 73", image: "/images/MordazaP.jpg" },
-    { id: 13, name: "DISK", partNumber: "3128 3092 24", image: "/images/Disk.jpg" },
-    { id: 14, name: "DOWELL RIÑON", partNumber: "3128 3035 27", image: "/images/Dowell3.jpg" },
-    { id: 15, name: "DOWELL PASTEL", partNumber: "3125 0634 00", image: "/images/Dowell4.jpg" },
-    { id: 16, name: "ABRAZADERA CLAMP", partNumber: "3128 3406 87", image: "/images/AbrazaderaV.jpg" },
-    { id: 17, name: "HOSE DRUM", partNumber: "3128 0475 09", image: "/images/HoseDrum.jpg" },
-    { id: 18, name: "LIP SEAL", partNumber: "0130 99003 / 86223930", image: "/images/SelloAgua.jpg" },
-    { id: 19, name: "RING SEAL", partNumber: "86804291 / 0410 10180", image: "/images/RingSeal.jpg" },
-    { id: 20, name: "SELLO", partNumber: "3115 2333 00", image: "/images/Sello .jpg" },
-    { id: 21, name: "PLATE", partNumber: "3128 3021 13", image: "/images/Plate.jpg" },
-    { id: 22, name: "PROTECTOR DE NITRILO", partNumber: "3128 3094 40", image: "/images/Protector.jpg" },
-    { id: 23, name: "PULLEY WHELL", partNumber: "3128 0784 30", image: "/images/PulleyWhell.jpg" },
-    { id: 24, name: "SHOTCRETERA", partNumber: "", image: "/images/Shotcretera.jpg" },
-    { id: 25, name: "SEAL", partNumber: "3128 2166 00", image: "/images/Seal1.jpg" },
-    { id: 26, name: "SEAL-Q'TY 80EA", partNumber: "3128 3012 39", image: "/images/Seal2.jpg" },
-    { id: 27, name: "LOCK BUFFER TOPE", partNumber: "3315 1419 00", image: "/images/Lock.jpg" },
-    { id: 28, name: "SHIELD HC28", partNumber: "86778644", image: "/images/Shield1.jpg" },
-    { id: 29, name: "SHIELD R-32", partNumber: "0105 15304", image: "/images/Shield2.jpg" },
-    { id: 30, name: "TOBERA", partNumber: "E528970", image: "/images/Shotcretera2.jpg" },
-    { id: 31, name: "SLIDING PIECE", partNumber: "3128 3246 24", image: "/images/Sliding3.jpg" },
-    { id: 32, name: "SLIDING SANDVIK", partNumber: "330 016 98", image: "/images/Sliding4.jpg" },
-    { id: 33, name: "TRABADOR DE CABLE", partNumber: "0707 14001 / 0707 14002 / 0707 14017", image: "/images/Trabador.jpg" },
-  ]
+    { id: 1, name: "SLIDING PIECE", partNumber: "0105 07001 / 1612007", image: "Sliding.jpg" },
+    { id: 3, name: "DOWELL", partNumber: "0105 16001", image: "Dowell1.jpg" },
+    { id: 4, name: "BUFFER", partNumber: "263 634 18", image: "Buffer1.jpg" },
+    { id: 5, name: "PLACA DESLIZANTE", partNumber: "0105 07009", image: "PlacaDeslizante1.jpg" },
+    { id: 6, name: "CLAVIJA RECTANGULAR", partNumber: "0105 16004 / 1612013", image: "ClavijaRectangular.jpg" },
+    { id: 7, name: "CLAVIJA CUADRADA", partNumber: "0138 50001 / 1612003", image: "ClavijaCuadrada.jpg" },
+    { id: 8, name: "SPACER", partNumber: "3128 3141 05", image: "Spacer.jpg" },
+    { id: 9, name: "ANILLO DE GOMA CON CANAL", partNumber: "0105 15391 / 1612017", image: "AnilloC.jpg" },
+    { id: 10, name: "ANILLO DE GOMA SIN CANAL", partNumber: "0105 15480 / 1612018", image: "AnilloS.jpg" },
+    { id: 11, name: "BUSHING", partNumber: "3128 0020 90", image: "Bushing.jpg" },
+    { id: 12, name: "MORDAZA PROTECTOR", partNumber: "3128 3092 70, 71, 72, 73", image: "MordazaP.jpg" },
+    { id: 13, name: "DISK", partNumber: "3128 3092 24", image: "Disk.jpg" },
+    { id: 14, name: "DOWELL RIÑON", partNumber: "3128 3035 27", image: "Dowell3.jpg" },
+    { id: 15, name: "DOWELL PASTEL", partNumber: "3125 0634 00", image: "Dowell4.jpg" },
+    { id: 16, name: "ABRAZADERA CLAMP", partNumber: "3128 3406 87", image: "AbrazaderaV.jpg" },
+    { id: 17, name: "HOSE DRUM", partNumber: "3128 0475 09", image: "HoseDrum.jpg" },
+    { id: 18, name: "LIP SEAL", partNumber: "0130 99003 / 86223930", image: "SelloAgua.jpg" },
+    { id: 19, name: "RING SEAL", partNumber: "86804291 / 0410 10180", image: "RingSeal.jpg" },
+    { id: 20, name: "SELLO", partNumber: "3115 2333 00", image: "Sello .jpg" },
+    { id: 21, name: "PLATE", partNumber: "3128 3021 13", image: "Plate.jpg" },
+    { id: 22, name: "PROTECTOR DE NITRILO", partNumber: "3128 3094 40", image: "Protector.jpg" },
+    { id: 23, name: "PULLEY WHELL", partNumber: "3128 0784 30", image: "PulleyWhell.jpg" },
+    { id: 24, name: "SHOTCRETERA", partNumber: "", image: "Shotcretera.jpg" },
+    { id: 25, name: "SEAL", partNumber: "3128 2166 00", image: "Seal1.jpg" },
+    { id: 26, name: "SEAL-Q'TY 80EA", partNumber: "3128 3012 39", image: "Seal2.jpg" },
+    { id: 27, name: "LOCK BUFFER TOPE", partNumber: "3315 1419 00", image: "Lock.jpg" },
+    { id: 28, name: "SHIELD HC28", partNumber: "86778644", image: "Shield1.jpg" },
+    { id: 29, name: "SHIELD R-32", partNumber: "0105 15304", image: "Shield2.jpg" },
+    { id: 30, name: "TOBERA", partNumber: "E528970", image: "Shotcretera2.jpg" },
+    { id: 31, name: "SLIDING PIECE", partNumber: "3128 3246 24", image: "Sliding3.jpg" },
+    { id: 32, name: "SLIDING SANDVIK", partNumber: "330 016 98", image: "Sliding4.jpg" },
+    { id: 33, name: "TRABADOR DE CABLE", partNumber: "0707 14001 / 0707 14002 / 0707 14017", image: "Trabador.jpg" },
+  ];
 
   const addToQuote = (product: (typeof products)[0]) => {
     const existingItem = quoteItems.find((item) => item.id === product.id)
@@ -163,8 +162,9 @@ export function ShopSection() {
                   <div className="relative pt-6 px-6">
                     <div className="w-full h-56 bg-slate-50 flex items-center justify-center overflow-hidden rounded-[1.5rem] border border-slate-100 relative group/img">
                       <img
-                        src={product.image || "/placeholder.svg"}
+                        src={`/api/watermark?image=${product.image}`}
                         alt={product.name}
+                        onContextMenu={(e) => e.preventDefault()} // Seguridad extra
                         className="max-w-[85%] max-h-[85%] object-contain transition-transform duration-500 group-hover/img:scale-110"
                       />
                       <div className="absolute inset-0 bg-red-600/5 opacity-0 group-hover/img:opacity-100 transition-opacity" />
@@ -180,7 +180,7 @@ export function ShopSection() {
                             <Eye className="h-5 w-5" />
                           </Button>
                         </DialogTrigger>
-                        <DialogContent className="max-w-4xl w-full p-0 bg-white border-none rounded-[2rem] overflow-hidden">
+                        <DialogContent className="max-h-[70vh] w-full p-0 bg-white border-none rounded-[2rem] overflow-hidden [&>button]:hidden ">
                           <DialogTitle className="sr-only">{product.name}</DialogTitle>
                           <div className="relative p-12 flex flex-col items-center">
                             <Button
@@ -191,7 +191,12 @@ export function ShopSection() {
                             >
                               <X className="h-6 w-6" />
                             </Button>
-                            <img src={product.image} alt={product.name} className="max-h-[60vh] object-contain mb-8" />
+                            <img
+                              src={`/api/watermark?image=${product.image}`}
+                              alt={product.name}
+                              onContextMenu={(e) => e.preventDefault()}
+                              className="max-h-[60vh] object-contain mb-8"
+                            />
                             <h3 className="text-4xl font-black text-slate-950 uppercase italic tracking-tighter mb-4">{product.name}</h3>
                             <div className="px-6 py-2 bg-red-50 rounded-full text-red-600 font-mono font-bold tracking-widest uppercase">
                               P/N: {product.partNumber}
