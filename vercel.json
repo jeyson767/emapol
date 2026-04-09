@@ -9,6 +9,16 @@
       "source": "/servicios",
       "destination": "/#services",
       "permanent": true
+    },
+    {
+      "source": "/productos",
+      "destination": "/tienda",
+      "permanent": true
+    },
+    {
+      "source": "/productos/(.*)",
+      "destination": "/tienda",
+      "permanent": true
     }
   ]
 }

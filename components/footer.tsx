@@ -11,7 +11,7 @@ export function Footer() {
     { name: "Inicio", href: "/" },
     { name: "Nosotros", href: "/nosotros" }, 
     { name: "Blog", href: "/blog" },
-    { name: "Repuestos", href: "/productos" },
+    { name: "Repuestos", href: "/tienda" },
     { name: "Contacto", href: "/contacto" },
   ]
 
